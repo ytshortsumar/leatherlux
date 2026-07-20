@@ -1,0 +1,55 @@
+.lux-navbar {
+  background-color: #1c1410;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(212, 175, 116, 0.2);
+}
+
+.lux-brand {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.03em;
+  color: #f3ede4 !important;
+  font-weight: 500;
+}
+
+.lux-brand-accent {
+  color: #d4af74;
+}
+
+.lux-nav-link {
+  color: #d8cfc2 !important;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.lux-nav-link:hover {
+  color: #d4af74 !important;
+}
+
+.navbar-toggler {
+  border-color: rgba(212, 175, 116, 0.4);
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.lux-dropdown-menu {
+  background-color: #241a14;
+  border: 1px solid rgba(212, 175, 116, 0.2);
+  margin-top: 0.5rem;
+}
+
+.lux-dropdown-item {
+  color: #d8cfc2;
+  font-size: 0.9rem;
+  padding: 0.5rem 1.2rem;
+}
+
+.lux-dropdown-item:hover,
+.lux-dropdown-item:focus {
+  background-color: rgba(212, 175, 116, 0.15);
+  color: #d4af74;
+}
