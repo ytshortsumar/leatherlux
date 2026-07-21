@@ -1,0 +1,65 @@
+.lux-contact-section {
+  padding: 4rem 0;
+  background-color: #f8f6f2;
+}
+
+.lux-contact-form {
+  max-width: 560px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #e8e2d8;
+  padding: 2.5rem;
+  border-radius: 4px;
+}
+
+.lux-form-group {
+  margin-bottom: 1.4rem;
+}
+
+.lux-form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: #1c1410;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.lux-form-group input,
+.lux-form-group textarea {
+  width: 100%;
+  border: 1px solid #d9d2c5;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.95rem;
+  border-radius: 3px;
+  font-family: inherit;
+  color: #2b2320;
+  resize: vertical;
+}
+
+.lux-form-group input:focus,
+.lux-form-group textarea:focus {
+  outline: none;
+  border-color: #d4af74;
+}
+
+.lux-form-btn {
+  background-color: #1c1410;
+  color: #f3ede4;
+  border: none;
+  padding: 0.85rem 2.2rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.lux-form-btn:hover {
+  background-color: #d4af74;
+  color: #1c1410;
+}
+
+@media (max-width: 500px) {
+  .lux-contact-form { padding: 1.8rem; }
+}

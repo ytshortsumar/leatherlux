@@ -1,0 +1,106 @@
+.lux-page-hero {
+  background-color: #1c1410;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.lux-page-tag {
+  color: #d4af74;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lux-page-heading {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.6rem;
+  color: #f3ede4;
+  margin: 0.6rem 0;
+}
+
+.lux-page-subtext {
+  color: #c9beb0;
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.lux-about-section {
+  padding: 4rem 0;
+  background-color: #f8f6f2;
+}
+
+.lux-about-block {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+
+.lux-about-block h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #1c1410;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.lux-about-block p {
+  color: #4a3f36;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.lux-about-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto 3rem;
+}
+
+.lux-about-card {
+  background-color: #fff;
+  border: 1px solid #e8e2d8;
+  padding: 1.5rem;
+  border-radius: 4px;
+}
+
+.lux-about-card h3 {
+  font-size: 1rem;
+  color: #1c1410;
+  margin-bottom: 0.5rem;
+}
+
+.lux-about-card p {
+  font-size: 0.88rem;
+  color: #7a6f62;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.lux-about-visit {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #e8e2d8;
+}
+
+.lux-about-visit h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #1c1410;
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.lux-about-visit p {
+  color: #4a3f36;
+  font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+  .lux-about-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+  .lux-about-grid { grid-template-columns: 1fr; }
+  .lux-page-heading { font-size: 2rem; }
+}

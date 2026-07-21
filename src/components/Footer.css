@@ -1,0 +1,96 @@
+.lux-footer {
+  background-color: #1c1410;
+  color: #d8cfc2;
+  padding: 3.5rem 0 1.5rem;
+  margin-top: 4rem;
+}
+
+.lux-footer-brand {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #f3ede4;
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.lux-brand-accent { color: #d4af74; }
+
+.lux-footer-text {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #b8ada0;
+  max-width: 280px;
+}
+
+.lux-footer-heading {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #d4af74;
+  margin-bottom: 1.1rem;
+}
+
+.lux-footer-links { list-style: none; padding: 0; margin: 0; }
+.lux-footer-links li { margin-bottom: 0.6rem; }
+.lux-footer-links a {
+  color: #b8ada0;
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: color 0.2s ease;
+}
+.lux-footer-links a:hover { color: #d4af74; }
+
+.lux-footer-social {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+.lux-footer-social a {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(212, 175, 116, 0.3);
+  border-radius: 50%;
+  color: #d8cfc2;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.lux-footer-social a:hover { border-color: #d4af74; color: #d4af74; }
+
+.lux-newsletter-form {
+  display: flex;
+  margin-top: 1rem;
+  border: 1px solid rgba(212, 175, 116, 0.3);
+}
+.lux-newsletter-form input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 0.6rem 0.8rem;
+  color: #f3ede4;
+  font-size: 0.85rem;
+  outline: none;
+}
+.lux-newsletter-form input::placeholder { color: #8a7f72; }
+.lux-newsletter-form button {
+  background-color: #d4af74;
+  color: #1c1410;
+  border: none;
+  padding: 0 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+.lux-newsletter-form button:hover { background-color: #c39d5f; }
+
+.lux-footer-divider {
+  border-color: rgba(212, 175, 116, 0.15);
+  margin: 2.2rem 0 1.2rem;
+}
+
+.lux-footer-copyright {
+  font-size: 0.8rem;
+  color: #8a7f72;
+  text-align: center;
+  margin: 0;
+}

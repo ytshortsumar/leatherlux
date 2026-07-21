@@ -1,0 +1,42 @@
+.lux-features {
+  background-color: #f8f6f2;
+  padding: 2rem 0;
+  border-bottom: 1px solid #e8e2d8;
+}
+
+.lux-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.lux-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.lux-feature-icon {
+  color: #d4af74;
+  flex-shrink: 0;
+}
+
+.lux-feature-title {
+  font-size: 0.95rem;
+  color: #1c1410;
+  margin: 0 0 0.2rem;
+}
+
+.lux-feature-text {
+  font-size: 0.8rem;
+  color: #7a6f62;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .lux-features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+  .lux-features-grid { grid-template-columns: 1fr; }
+}

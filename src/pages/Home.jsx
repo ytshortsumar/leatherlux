@@ -1,4 +1,12 @@
+import Hero from '../components/Hero'
+import Features from '../components/Features'
 function Home() {
-  return <div className="container py-5"><h1>Home</h1></div>
+  return (
+    <div>
+      <Hero />
+      <Features />
+    </div>
+  )
 }
+
 export default Home
