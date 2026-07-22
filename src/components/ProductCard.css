@@ -1,0 +1,102 @@
+.lux-card {
+  background-color: #ffffff;
+  border: 1px solid #e8e2d8;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lux-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(28, 20, 16, 0.12);
+}
+
+.lux-card-media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: #f8f6f2;
+}
+
+.lux-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.lux-card:hover .lux-card-img {
+  transform: scale(1.05);
+}
+
+.lux-card-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, #efe9df 0%, #ded3c2 100%);
+}
+
+.lux-card-fallback-text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  color: #8a7a66;
+}
+
+.lux-card-category {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  background-color: rgba(28, 20, 16, 0.85);
+  color: #d4af74;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+}
+
+.lux-card-body {
+  padding: 1.1rem 1.2rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.lux-card-name {
+  font-size: 1.05rem;
+  margin: 0 0 0.4rem;
+  color: #1c1410;
+}
+
+.lux-card-price {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #6b4e2e;
+  margin: 0 0 1rem;
+}
+
+.lux-card-btn {
+  margin-top: auto;
+  display: inline-block;
+  text-align: center;
+  background-color: #1c1410;
+  color: #f8f4ee;
+  padding: 0.7rem 1rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+.lux-card-btn:hover {
+  background-color: #d4af74;
+  color: #1c1410;
+}

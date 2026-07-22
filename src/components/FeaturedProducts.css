@@ -1,0 +1,74 @@
+.lux-featured {
+  background-color: #f8f6f2;
+  padding: 4rem 0;
+}
+
+.lux-featured-head {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+}
+
+.lux-featured-tag {
+  display: block;
+  color: #d4af74;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.lux-featured-title {
+  font-size: 2.2rem;
+  color: #1c1410;
+  margin: 0 0 0.8rem;
+}
+
+.lux-featured-subtext {
+  color: #7a6f62;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.lux-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+}
+
+.lux-featured-cta {
+  text-align: center;
+  margin-top: 2.8rem;
+}
+
+.lux-featured-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #d4af74;
+  color: #1c1410;
+  padding: 0.85rem 2rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.lux-featured-btn:hover {
+  background-color: #c39d5f;
+  transform: translateX(2px);
+}
+
+
+@media (max-width: 900px) {
+  .lux-featured-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .lux-featured { padding: 3rem 0; }
+  .lux-featured-grid { grid-template-columns: 1fr; }
+  .lux-featured-title { font-size: 1.8rem; }
+}
