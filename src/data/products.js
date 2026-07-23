@@ -1,6 +1,5 @@
-// Mock product data for LeatherLux.we will later 
-// replaced it  by Firebase Firestore (Module 2).
-
+// Mock product data for LeatherLux.
+// Will be replaced by Firebase Firestore (Module 2).
 const products = [
   {
     id: 1,

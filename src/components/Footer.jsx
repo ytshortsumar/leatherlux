@@ -62,7 +62,7 @@ function Footer() {
               Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.
             </p>
             <form className="lux-newsletter-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="Enter your email" required />
+              <input type="email" placeholder="Enter your email" aria-label="Email address for newsletter" required />
               <button type="submit" aria-label="Subscribe">→</button>
             </form>
           </div>

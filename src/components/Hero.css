@@ -136,3 +136,22 @@
     );
   }
 }
+
+@media (max-width: 480px) {
+  .lux-hero {
+    min-height: 440px;
+  }
+
+  .lux-hero-heading {
+    font-size: 1.8rem;
+  }
+
+  .lux-hero-subtext {
+    font-size: 0.92rem;
+  }
+
+  .lux-hero-btn {
+    padding: 0.75rem 1.6rem;
+    font-size: 0.85rem;
+  }
+}

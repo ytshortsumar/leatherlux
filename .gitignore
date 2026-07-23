@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Day 4: local backup of original (uncompressed) product images — not for the repo
+.image-backup/
