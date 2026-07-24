@@ -3,7 +3,7 @@
 A premium leather goods e-commerce storefront built with React and Vite.
 Handcrafted full-grain leather wallets, bags, jackets, and belts.
 
-**Live Demo:** _[add your Vercel link here after deploying]_
+**Live Demo:** https://leatherlux.vercel.app
 
 > Frontend Web Development Internship — Zynnex Solutions
 > Umar Farooq · ZYNVEX-CERT-0933
