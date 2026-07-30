@@ -34,6 +34,63 @@
   color: #f3ede4;
 }
 
+.lux-shop-price {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-bottom: 1.6rem;
+}
+
+.lux-shop-price-label {
+  color: #5c5245;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.lux-shop-price-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.lux-shop-price-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid #d8cebf;
+  border-radius: 2px;
+  padding: 0.4rem 0.7rem;
+  background-color: #fff;
+}
+
+.lux-shop-price-field span {
+  color: #7a6f62;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.lux-shop-price-prefix {
+  color: #1c1410 !important;
+  font-size: 0.9rem !important;
+  text-transform: none !important;
+}
+
+.lux-shop-price-field input {
+  width: 68px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: #1c1410;
+  background: transparent;
+}
+
+.lux-shop-price-dash {
+  color: #7a6f62;
+}
+
 .lux-shop-bar {
   display: flex;
   align-items: center;
@@ -41,11 +98,36 @@
   margin-bottom: 1.8rem;
 }
 
+.lux-shop-reset {
+  background-color: transparent;
+  color: #8a5a2b;
+  border: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.lux-shop-reset:hover {
+  color: #1c1410;
+}
+
 .lux-shop-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
   color: #7a6f62;
   font-size: 0.95rem;
   text-align: center;
   padding: 3rem 0;
+}
+
+.lux-shop-empty p {
+  margin: 0;
 }
 
 .lux-shop-count {
@@ -69,4 +151,5 @@
 @media (max-width: 560px) {
   .lux-shop { padding: 2.5rem 0 3rem; }
   .lux-shop-grid { grid-template-columns: 1fr; }
+  .lux-shop-price { align-items: flex-start; }
 }
