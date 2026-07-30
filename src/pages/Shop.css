@@ -3,11 +3,49 @@
   background-color: #f8f6f2;
 }
 
+.lux-shop-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.lux-shop-filter {
+  background-color: transparent;
+  color: #5c5245;
+  border: 1px solid #d8cebf;
+  border-radius: 2px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.lux-shop-filter:hover {
+  border-color: #d4af74;
+  color: #1c1410;
+}
+
+.lux-shop-filter.active {
+  background-color: #1c1410;
+  border-color: #1c1410;
+  color: #f3ede4;
+}
+
 .lux-shop-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.8rem;
+}
+
+.lux-shop-empty {
+  color: #7a6f62;
+  font-size: 0.95rem;
+  text-align: center;
+  padding: 3rem 0;
 }
 
 .lux-shop-count {
