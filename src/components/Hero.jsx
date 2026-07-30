@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import heroImg1 from '../assets/hero/hero-1.png'
-import heroImg2 from '../assets/hero/hero-2.png'
-import heroImg3 from '../assets/hero/hero-3.png'
+import heroImg1 from '../assets/hero/hero-1.webp'
+import heroImg2 from '../assets/hero/hero-2.webp'
+import heroImg3 from '../assets/hero/hero-3.webp'
 import './Hero.css'
 
 const images = [heroImg1, heroImg2, heroImg3]
@@ -25,6 +25,9 @@ function Hero() {
           src={img}
           alt="LeatherLux premium leather goods"
           className={`lux-hero-bg ${index === active ? 'active' : ''}`}
+          loading={index === 0 ? 'eager' : 'lazy'}
+          fetchPriority={index === 0 ? 'high' : 'low'}
+          decoding="async"
         />
       ))}
 

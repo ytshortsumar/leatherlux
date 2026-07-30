@@ -1,0 +1,34 @@
+.lux-shop {
+  padding: 3rem 0 4rem;
+  background-color: #f8f6f2;
+}
+
+.lux-shop-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.8rem;
+}
+
+.lux-shop-count {
+  color: #7a6f62;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.lux-shop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+}
+
+@media (max-width: 900px) {
+  .lux-shop-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .lux-shop { padding: 2.5rem 0 3rem; }
+  .lux-shop-grid { grid-template-columns: 1fr; }
+}
