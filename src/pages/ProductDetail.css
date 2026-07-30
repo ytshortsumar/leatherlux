@@ -1,0 +1,123 @@
+.lux-detail {
+  padding: 3rem 0 4rem;
+  background-color: #f8f6f2;
+}
+
+.lux-detail-back {
+  display: inline-block;
+  margin-bottom: 1.8rem;
+  color: #8a5a2b;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.lux-detail-back:hover {
+  color: #1c1410;
+}
+
+.lux-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.lux-detail-category {
+  color: #8a7a66;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lux-detail-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.2rem;
+  color: #1c1410;
+  margin: 0.5rem 0 0.6rem;
+}
+
+.lux-detail-price {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #6b4e2e;
+  margin: 0 0 1.4rem;
+}
+
+.lux-detail-description {
+  color: #4a3f36;
+  line-height: 1.75;
+  margin: 0 0 1.8rem;
+}
+
+.lux-detail-specs h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.2rem;
+  color: #1c1410;
+  margin: 0 0 0.8rem;
+}
+
+.lux-detail-specs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.lux-detail-specs li {
+  color: #4a3f36;
+  font-size: 0.95rem;
+  padding: 0.5rem 0 0.5rem 1.4rem;
+  border-bottom: 1px solid #e8e2d8;
+  position: relative;
+}
+
+.lux-detail-specs li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #d4af74;
+}
+
+.lux-detail-add {
+  background-color: #1c1410;
+  color: #f8f4ee;
+  border: none;
+  padding: 0.9rem 2.2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lux-detail-add:hover {
+  background-color: #d4af74;
+  color: #1c1410;
+}
+
+.lux-detail-missing {
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.lux-detail-missing h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #1c1410;
+  margin-bottom: 0.8rem;
+}
+
+.lux-detail-missing p {
+  color: #7a6f62;
+  margin-bottom: 1.6rem;
+}
+
+@media (max-width: 760px) {
+  .lux-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .lux-detail-name { font-size: 1.8rem; }
+}

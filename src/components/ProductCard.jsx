@@ -28,7 +28,7 @@ function ProductCard({ product }) {
       <div className="lux-card-body">
         <h3 className="lux-card-name">{product.name}</h3>
         <p className="lux-card-price">${product.price}</p>
-        <Link to="/shop" className="lux-card-btn">
+        <Link to={`/product/${product.id}`} className="lux-card-btn">
           View Details
         </Link>
       </div>
