@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Firebase credentials — keep real keys out of the repo (.env.example is committed instead)
+.env
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

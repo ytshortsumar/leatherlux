@@ -3,6 +3,13 @@
   background-color: #f8f6f2;
 }
 
+.lux-shop-status {
+  text-align: center;
+  padding: 3rem 0;
+  color: #7a6f62;
+  font-size: 1.05rem;
+}
+
 .lux-shop-filters {
   display: flex;
   flex-wrap: wrap;

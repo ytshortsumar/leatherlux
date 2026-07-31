@@ -1,5 +1,6 @@
-// Mock product data for LeatherLux.
-// Will be replaced by Firebase Firestore (Module 2).
+// Product seed data for LeatherLux.
+// The app now reads products from Firebase Firestore; this file is the source
+// used by scripts/seedFirestore.js to populate the Firestore "products" collection.
 const products = [
   {
     id: 1,

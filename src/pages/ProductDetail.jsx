@@ -1,11 +1,43 @@
+import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import ImageGallery from '../components/ImageGallery'
-import products from '../data/products'
+import { getProductById } from '../services/productService'
 import './ProductDetail.css'
 
 function ProductDetail() {
   const { id } = useParams()
-  const product = products.find((item) => item.id === Number(id))
+  const [loaded, setLoaded] = useState({ id: null, product: null })
+
+  useEffect(() => {
+    let active = true
+    getProductById(id)
+      .then((data) => {
+        if (!active) return
+        setLoaded({ id, product: data })
+      })
+      .catch(() => {
+        if (!active) return
+        setLoaded({ id, product: null })
+      })
+    return () => {
+      active = false
+    }
+  }, [id])
+
+  const loading = loaded.id !== id
+  const product = loading ? null : loaded.product
+
+  if (loading) {
+    return (
+      <div className="lux-page">
+        <section className="lux-detail-missing">
+          <div className="container">
+            <p>Loading…</p>
+          </div>
+        </section>
+      </div>
+    )
+  }
 
   if (!product) {
     return (

@@ -1,10 +1,25 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ProductCard from './ProductCard'
-import products from '../data/products'
+import { getFeaturedProducts } from '../services/productService'
 import './FeaturedProducts.css'
 
 function FeaturedProducts() {
-  const featured = products.filter((product) => product.featured)
+  const [featured, setFeatured] = useState([])
+
+  useEffect(() => {
+    let active = true
+    getFeaturedProducts()
+      .then((data) => {
+        if (active) setFeatured(data)
+      })
+      .catch(() => {
+        if (active) setFeatured([])
+      })
+    return () => {
+      active = false
+    }
+  }, [])
 
   return (
     <section className="lux-featured">
