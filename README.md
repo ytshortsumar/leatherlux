@@ -13,7 +13,10 @@ Handcrafted full-grain leather wallets, bags, jackets, and belts.
 - **Responsive Navbar** with logo, mobile menu, and a Shop dropdown (Wallets, Jackets, Bags, Belts)
 - **Hero section** — rotating 3-image carousel with overlay, heading, and "Shop Now" CTA
 - **Features strip** — Premium Quality, Handcrafted, Fast & Reliable, Easy Returns
-- **Featured Products** — reusable ProductCard component driven by mock product data
+- **Featured Products** — reusable ProductCard component, data loaded from Firestore
+- **Shop page** — responsive product grid with combined category and price-range filtering, live product count, reset, and empty state
+- **Product Detail page** — dynamic routing (`/product/:id`), reusable image gallery component, full description, price, and details, with loading and "Product not found" states
+- **Firebase Firestore** — product data stored in Firestore and fetched dynamically on the Shop, Product Detail, and Featured Products sections (replacing mock data)
 - **About & Contact pages** — full content, store details, and a working contact form UI
 - **Footer** — brand info, quick links, customer service links, newsletter form, and social icons
 - Fully responsive across mobile, tablet, and desktop
@@ -22,6 +25,7 @@ Handcrafted full-grain leather wallets, bags, jackets, and belts.
 
 - **React** (Vite)
 - **React Router** — client-side routing
+- **Firebase Firestore** — cloud product data
 - **Bootstrap 5** — layout and grid
 - **lucide-react** — icons
 - Plain CSS (scoped per component)
@@ -42,16 +46,46 @@ npm run build
 npm run preview
 ```
 
+### Firebase setup
+
+Product data is served from Firebase Firestore. To run the app with your own
+Firebase project:
+
+1. Create a Firebase project and enable **Cloud Firestore**.
+2. Register a **Web app** and copy its config values.
+3. Create a `.env` file in the project root (see `.env.example` for the keys):
+
+   ```
+   VITE_FIREBASE_API_KEY=...
+   VITE_FIREBASE_AUTH_DOMAIN=...
+   VITE_FIREBASE_PROJECT_ID=...
+   VITE_FIREBASE_STORAGE_BUCKET=...
+   VITE_FIREBASE_MESSAGING_SENDER_ID=...
+   VITE_FIREBASE_APP_ID=...
+   ```
+
+4. Seed the Firestore `products` collection with the sample data:
+
+   ```bash
+   npm run seed
+   ```
+
+The `.env` file is git-ignored so credentials stay out of the repository.
+
 ## Project Structure
 
 ```
 src/
 ├── assets/        # Images (hero carousel)
-├── components/    # Navbar, Footer, Hero, Features, ProductCard, FeaturedProducts
-├── data/          # Mock product data
-├── pages/         # Home, Shop, Cart, About, Contact
+├── components/    # Navbar, Footer, Hero, Features, ProductCard, FeaturedProducts, ImageGallery
+├── data/          # Product seed data (source for the Firestore seed script)
+├── pages/         # Home, Shop, ProductDetail, Cart, About, Contact
+├── services/      # productService — Firestore data access
+├── firebase.js    # Firebase app + Firestore init
 ├── App.jsx        # Routes
 └── main.jsx       # Entry point
+scripts/
+└── seedFirestore.js  # Migrates product data into Firestore
 public/
 └── products/      # Product images
 ```
@@ -59,6 +93,6 @@ public/
 ## Roadmap
 
 - **Module 1** — Project foundation, homepage, deployment ✅
-- **Module 2** — Shop page, filtering, product detail pages, Firebase Firestore
+- **Module 2** — Shop page, filtering, product detail pages, Firebase Firestore ✅
 - **Module 3** — Cart & checkout
 - **Module 4** — Admin panel, final polish & deployment
