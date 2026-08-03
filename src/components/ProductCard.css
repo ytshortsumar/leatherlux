@@ -81,8 +81,14 @@
   margin: 0 0 1rem;
 }
 
-.lux-card-btn {
+.lux-card-actions {
   margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lux-card-btn {
   display: inline-block;
   text-align: center;
   background-color: #1c1410;
@@ -99,4 +105,25 @@
 .lux-card-btn:hover {
   background-color: #d4af74;
   color: #1c1410;
+}
+
+.lux-card-add {
+  display: inline-block;
+  text-align: center;
+  background-color: transparent;
+  color: #1c1410;
+  border: 1px solid #1c1410;
+  padding: 0.7rem 1rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.lux-card-add:hover {
+  background-color: #6b4e2e;
+  border-color: #6b4e2e;
+  color: #f8f4ee;
 }

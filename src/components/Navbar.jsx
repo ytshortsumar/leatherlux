@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useCart } from '../hooks/useCart'
 import './Navbar.css'
 
 function Navbar() {
   const categories = ['Wallets', 'Jackets', 'Bags', 'Belts']
+  const { totalItems } = useCart()
 
   return (
     <nav className="navbar navbar-expand-lg lux-navbar sticky-top">
@@ -61,7 +63,12 @@ function Navbar() {
               <Link className="nav-link lux-nav-link" to="/contact">Contact</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link lux-nav-link" to="/cart">Cart</Link>
+              <Link className="nav-link lux-nav-link lux-cart-link" to="/cart">
+                Cart
+                {totalItems > 0 && (
+                  <span className="lux-cart-badge">{totalItems}</span>
+                )}
+              </Link>
             </li>
           </ul>
         </div>

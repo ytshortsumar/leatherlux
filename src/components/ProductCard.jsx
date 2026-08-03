@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useCart } from '../hooks/useCart'
 import './ProductCard.css'
 
 
 function ProductCard({ product }) {
   const [imgFailed, setImgFailed] = useState(false)
+  const { addToCart } = useCart()
 
   return (
     <div className="lux-card">
@@ -28,9 +30,18 @@ function ProductCard({ product }) {
       <div className="lux-card-body">
         <h3 className="lux-card-name">{product.name}</h3>
         <p className="lux-card-price">${product.price}</p>
-        <Link to={`/product/${product.id}`} className="lux-card-btn">
-          View Details
-        </Link>
+        <div className="lux-card-actions">
+          <Link to={`/product/${product.id}`} className="lux-card-btn">
+            View Details
+          </Link>
+          <button
+            type="button"
+            className="lux-card-add"
+            onClick={() => addToCart(product)}
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   )

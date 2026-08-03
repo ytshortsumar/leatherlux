@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import ImageGallery from '../components/ImageGallery'
 import { getProductById } from '../services/productService'
+import { useCart } from '../hooks/useCart'
 import './ProductDetail.css'
 
 function ProductDetail() {
   const { id } = useParams()
   const [loaded, setLoaded] = useState({ id: null, product: null })
+  const [addedId, setAddedId] = useState(null)
+  const { addToCart } = useCart()
 
   useEffect(() => {
     let active = true
@@ -26,6 +29,16 @@ function ProductDetail() {
 
   const loading = loaded.id !== id
   const product = loading ? null : loaded.product
+
+  // "Added" confirmation shows only while the added id matches this product,
+  // so navigating to a different product naturally resets it.
+  const justAdded = addedId === id
+
+  const handleAddToCart = () => {
+    if (!product) return
+    addToCart(product)
+    setAddedId(id)
+  }
 
   if (loading) {
     return (
@@ -85,8 +98,12 @@ function ProductDetail() {
                 </div>
               )}
 
-              <button type="button" className="lux-detail-add">
-                Add to Cart
+              <button
+                type="button"
+                className="lux-detail-add"
+                onClick={handleAddToCart}
+              >
+                {justAdded ? 'Added ✓' : 'Add to Cart'}
               </button>
             </div>
           </div>
