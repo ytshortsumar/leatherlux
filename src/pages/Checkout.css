@@ -1,0 +1,225 @@
+.lux-checkout {
+  padding: 3rem 0 4rem;
+  background-color: #f8f6f2;
+  min-height: 50vh;
+}
+
+/* ---- Empty state ---- */
+.lux-checkout-empty {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.lux-checkout-empty p {
+  color: #7a6f62;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.lux-checkout-shop-link {
+  display: inline-block;
+  background-color: #1c1410;
+  color: #f8f4ee;
+  padding: 0.8rem 2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lux-checkout-shop-link:hover {
+  background-color: #d4af74;
+  color: #1c1410;
+}
+
+/* ---- Layout ---- */
+.lux-checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* ---- Form ---- */
+.lux-checkout-form {
+  background-color: #ffffff;
+  border: 1px solid #e8e2d8;
+  border-radius: 4px;
+  padding: 2rem 2.2rem;
+}
+
+.lux-checkout-section-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.4rem;
+  color: #1c1410;
+  margin: 0 0 1.5rem;
+}
+
+.lux-field {
+  margin-bottom: 1.2rem;
+}
+
+.lux-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.lux-field label {
+  display: block;
+  color: #4a3f36;
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.lux-field input,
+.lux-field textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.95rem;
+  color: #1c1410;
+  background-color: #f8f6f2;
+  border: 1px solid #d8cebf;
+  border-radius: 3px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.lux-field input:focus,
+.lux-field textarea:focus {
+  outline: none;
+  border-color: #d4af74;
+  background-color: #ffffff;
+}
+
+.lux-field textarea {
+  resize: vertical;
+  font-family: inherit;
+}
+
+.lux-checkout-place {
+  width: 100%;
+  background-color: #1c1410;
+  color: #f8f4ee;
+  border: none;
+  padding: 0.95rem 2rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-top: 0.8rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lux-checkout-place:hover {
+  background-color: #d4af74;
+  color: #1c1410;
+}
+
+/* ---- Summary sidebar ---- */
+.lux-checkout-summary {
+  background-color: #ffffff;
+  border: 1px solid #e8e2d8;
+  border-radius: 4px;
+  padding: 1.8rem 1.6rem;
+  position: sticky;
+  top: 1.5rem;
+}
+
+.lux-checkout-summary-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.35rem;
+  color: #1c1410;
+  margin: 0 0 1.3rem;
+}
+
+.lux-checkout-summary-items {
+  margin-bottom: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e8e2d8;
+}
+
+.lux-checkout-summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.7rem;
+  font-size: 0.9rem;
+}
+
+.lux-checkout-item-name {
+  color: #4a3f36;
+  flex: 1;
+}
+
+.lux-checkout-item-qty {
+  color: #8a7a66;
+  font-size: 0.8rem;
+  margin-left: 0.4rem;
+}
+
+.lux-checkout-item-price {
+  color: #6b4e2e;
+  font-weight: 600;
+  margin-left: 1rem;
+}
+
+.lux-checkout-summary-row {
+  display: flex;
+  justify-content: space-between;
+  color: #4a3f36;
+  font-size: 0.92rem;
+  margin-bottom: 0.7rem;
+}
+
+.lux-checkout-summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #e8e2d8;
+  margin-top: 0.8rem;
+  padding-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1c1410;
+}
+
+.lux-checkout-back {
+  display: block;
+  text-align: center;
+  margin-top: 1.2rem;
+  color: #8a5a2b;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.lux-checkout-back:hover {
+  color: #1c1410;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .lux-checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lux-checkout-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .lux-checkout-form {
+    padding: 1.5rem 1.3rem;
+  }
+
+  .lux-field-row {
+    grid-template-columns: 1fr;
+  }
+}
