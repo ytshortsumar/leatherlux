@@ -13,19 +13,85 @@ const initialDetails = {
   notes: '',
 }
 
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const phonePattern = /^[0-9+\-\s()]{7,}$/
+
+function validateField(name, value) {
+  const trimmed = value.trim()
+  switch (name) {
+    case 'fullName':
+      if (!trimmed) return 'Full name is required.'
+      if (trimmed.length < 3) return 'Please enter your full name.'
+      return ''
+    case 'email':
+      if (!trimmed) return 'Email is required.'
+      if (!emailPattern.test(trimmed)) return 'Please enter a valid email address.'
+      return ''
+    case 'phone':
+      if (!trimmed) return 'Phone number is required.'
+      if (!phonePattern.test(trimmed)) return 'Please enter a valid phone number.'
+      return ''
+    case 'address':
+      if (!trimmed) return 'Address is required.'
+      return ''
+    case 'city':
+      if (!trimmed) return 'City is required.'
+      return ''
+    case 'postalCode':
+      if (!trimmed) return 'Postal code is required.'
+      if (!/^[0-9]{4,}$/.test(trimmed)) return 'Please enter a valid postal code.'
+      return ''
+    default:
+      return ''
+  }
+}
+
+// Fields that must pass validation (notes is optional and excluded).
+const requiredFields = ['fullName', 'email', 'phone', 'address', 'city', 'postalCode']
+
 function Checkout() {
-  const { items, totalItems, totalPrice } = useCart()
+  const { items, totalItems, totalPrice, clearCart } = useCart()
   const [details, setDetails] = useState(initialDetails)
+  const [errors, setErrors] = useState({})
+  const [placed, setPlaced] = useState(false)
 
   const handleChange = (event) => {
     const { name, value } = event.target
     setDetails((current) => ({ ...current, [name]: value }))
+    // Clear a field's error as soon as the user starts correcting it.
+    setErrors((current) => {
+      if (!current[name]) return current
+      const next = { ...current }
+      delete next[name]
+      return next
+    })
+  }
+
+  const handleBlur = (event) => {
+    const { name, value } = event.target
+    const message = validateField(name, value)
+    setErrors((current) => ({ ...current, [name]: message }))
   }
 
   const handleSubmit = (event) => {
-    // Order placement is wired up in a later task; for now just prevent the
-    // default page reload so the form UI can be reviewed on its own.
     event.preventDefault()
+    const nextErrors = {}
+    requiredFields.forEach((field) => {
+      const message = validateField(field, details[field])
+      if (message) nextErrors[field] = message
+    })
+    setErrors(nextErrors)
+    if (Object.keys(nextErrors).length > 0) {
+      // Move focus to the first field with an error for accessibility.
+      const firstInvalid = requiredFields.find((field) => nextErrors[field])
+      if (firstInvalid) {
+        const el = document.getElementById(firstInvalid)
+        if (el) el.focus()
+      }
+      return
+    }
+    setPlaced(true)
+    clearCart()
   }
 
   return (
@@ -42,7 +108,19 @@ function Checkout() {
 
       <section className="lux-checkout">
         <div className="container">
-          {items.length === 0 ? (
+          {placed ? (
+            <div className="lux-checkout-success">
+              <div className="lux-checkout-success-icon">✓</div>
+              <h2>Thank you for your order!</h2>
+              <p>
+                Your order has been placed successfully. A confirmation will be
+                sent to your email shortly.
+              </p>
+              <Link to="/shop" className="lux-checkout-shop-link">
+                Continue Shopping
+              </Link>
+            </div>
+          ) : items.length === 0 ? (
             <div className="lux-checkout-empty">
               <p>Your cart is empty, so there is nothing to check out.</p>
               <Link to="/shop" className="lux-checkout-shop-link">
@@ -54,7 +132,7 @@ function Checkout() {
               <form className="lux-checkout-form" onSubmit={handleSubmit}>
                 <h2 className="lux-checkout-section-title">Customer Details</h2>
 
-                <div className="lux-field">
+                <div className={`lux-field${errors.fullName ? ' has-error' : ''}`}>
                   <label htmlFor="fullName">Full Name</label>
                   <input
                     type="text"
@@ -62,12 +140,16 @@ function Checkout() {
                     name="fullName"
                     value={details.fullName}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder="e.g. Umar Farooq"
                   />
+                  {errors.fullName && (
+                    <span className="lux-field-error">{errors.fullName}</span>
+                  )}
                 </div>
 
                 <div className="lux-field-row">
-                  <div className="lux-field">
+                  <div className={`lux-field${errors.email ? ' has-error' : ''}`}>
                     <label htmlFor="email">Email</label>
                     <input
                       type="email"
@@ -75,11 +157,15 @@ function Checkout() {
                       name="email"
                       value={details.email}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       placeholder="you@example.com"
                     />
+                    {errors.email && (
+                      <span className="lux-field-error">{errors.email}</span>
+                    )}
                   </div>
 
-                  <div className="lux-field">
+                  <div className={`lux-field${errors.phone ? ' has-error' : ''}`}>
                     <label htmlFor="phone">Phone</label>
                     <input
                       type="tel"
@@ -87,12 +173,16 @@ function Checkout() {
                       name="phone"
                       value={details.phone}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       placeholder="03xx-xxxxxxx"
                     />
+                    {errors.phone && (
+                      <span className="lux-field-error">{errors.phone}</span>
+                    )}
                   </div>
                 </div>
 
-                <div className="lux-field">
+                <div className={`lux-field${errors.address ? ' has-error' : ''}`}>
                   <label htmlFor="address">Address</label>
                   <input
                     type="text"
@@ -100,12 +190,16 @@ function Checkout() {
                     name="address"
                     value={details.address}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder="Street address"
                   />
+                  {errors.address && (
+                    <span className="lux-field-error">{errors.address}</span>
+                  )}
                 </div>
 
                 <div className="lux-field-row">
-                  <div className="lux-field">
+                  <div className={`lux-field${errors.city ? ' has-error' : ''}`}>
                     <label htmlFor="city">City</label>
                     <input
                       type="text"
@@ -113,11 +207,15 @@ function Checkout() {
                       name="city"
                       value={details.city}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       placeholder="City"
                     />
+                    {errors.city && (
+                      <span className="lux-field-error">{errors.city}</span>
+                    )}
                   </div>
 
-                  <div className="lux-field">
+                  <div className={`lux-field${errors.postalCode ? ' has-error' : ''}`}>
                     <label htmlFor="postalCode">Postal Code</label>
                     <input
                       type="text"
@@ -125,8 +223,12 @@ function Checkout() {
                       name="postalCode"
                       value={details.postalCode}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       placeholder="Postal code"
                     />
+                    {errors.postalCode && (
+                      <span className="lux-field-error">{errors.postalCode}</span>
+                    )}
                   </div>
                 </div>
 

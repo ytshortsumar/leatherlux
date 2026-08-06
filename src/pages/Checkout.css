@@ -34,6 +34,41 @@
   color: #1c1410;
 }
 
+/* ---- Success state ---- */
+.lux-checkout-success {
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.lux-checkout-success-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #6b4e2e;
+  color: #f8f4ee;
+  font-size: 1.8rem;
+  border-radius: 50%;
+}
+
+.lux-checkout-success h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem;
+  color: #1c1410;
+  margin: 0 0 0.8rem;
+}
+
+.lux-checkout-success p {
+  color: #7a6f62;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.8rem;
+}
+
 /* ---- Layout ---- */
 .lux-checkout-layout {
   display: grid;
@@ -93,6 +128,25 @@
   outline: none;
   border-color: #d4af74;
   background-color: #ffffff;
+}
+
+/* ---- Validation error state ---- */
+.lux-field.has-error input,
+.lux-field.has-error textarea {
+  border-color: #c0392b;
+  background-color: #fdf3f2;
+}
+
+.lux-field.has-error input:focus,
+.lux-field.has-error textarea:focus {
+  border-color: #c0392b;
+}
+
+.lux-field-error {
+  display: block;
+  margin-top: 0.35rem;
+  color: #c0392b;
+  font-size: 0.8rem;
 }
 
 .lux-field textarea {
