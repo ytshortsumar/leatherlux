@@ -10,7 +10,6 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // We Will add Firebase integration  in Module 2 or in future updates
     console.log('Contact form submitted:', form)
   }
 

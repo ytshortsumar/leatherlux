@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useCart } from '../hooks/useCart'
+import { formatPrice } from '../utils/formatPrice'
 import './Cart.css'
 
 function Cart() {
@@ -13,7 +14,6 @@ function Cart() {
     totalPrice,
   } = useCart()
 
-  // Track which item images failed to load so we can show a graceful fallback.
   const [failedImages, setFailedImages] = useState([])
 
   const markImageFailed = (id) => {
@@ -69,7 +69,7 @@ function Cart() {
                       <h3 className="lux-cart-name">
                         <Link to={`/product/${item.id}`}>{item.name}</Link>
                       </h3>
-                      <p className="lux-cart-unit">${item.price} each</p>
+                      <p className="lux-cart-unit">{formatPrice(item.price)} each</p>
                     </div>
 
                     <div className="lux-cart-qty">
@@ -99,7 +99,7 @@ function Cart() {
                     </div>
 
                     <p className="lux-cart-line-total">
-                      ${item.price * item.quantity}
+                      {formatPrice(item.price * item.quantity)}
                     </p>
 
                     <button
@@ -129,7 +129,7 @@ function Cart() {
                 </div>
                 <div className="lux-cart-summary-row">
                   <span>Subtotal</span>
-                  <span>${totalPrice}</span>
+                  <span>{formatPrice(totalPrice)}</span>
                 </div>
                 <div className="lux-cart-summary-row">
                   <span>Shipping</span>
@@ -137,7 +137,7 @@ function Cart() {
                 </div>
                 <div className="lux-cart-summary-total">
                   <span>Total</span>
-                  <span>${totalPrice}</span>
+                  <span>{formatPrice(totalPrice)}</span>
                 </div>
                 <Link to="/checkout" className="lux-cart-checkout">
                   Proceed to Checkout

@@ -1,10 +1,9 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { CartContext } from './CartContext'
+import './Toast.css'
 
 const STORAGE_KEY = 'leatherlux-cart'
 
-// Read any previously saved cart from localStorage so items persist across
-// reloads and navigation. Runs once as the lazy initial state.
 function readStoredCart() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
@@ -18,17 +17,29 @@ function readStoredCart() {
 
 function CartProvider({ children }) {
   const [items, setItems] = useState(readStoredCart)
+  const [toast, setToast] = useState(null)
+  const toastId = useRef(0)
 
-  // Keep localStorage in sync whenever the cart changes.
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
     } catch {
-      // Ignore write errors (e.g. storage full or unavailable).
+      // Storage write error (e.g. storage full)
     }
   }, [items])
 
+  useEffect(() => {
+    if (!toast) return undefined
+    const timer = setTimeout(() => setToast(null), 2500)
+    return () => clearTimeout(timer)
+  }, [toast])
+
   const value = useMemo(() => {
+    const showToast = (message) => {
+      toastId.current += 1
+      setToast({ key: toastId.current, message })
+    }
+
     const addToCart = (product, quantity = 1) => {
       setItems((current) => {
         const existing = current.find((item) => item.id === product.id)
@@ -51,6 +62,7 @@ function CartProvider({ children }) {
           },
         ]
       })
+      showToast(`${product.name} added to cart successfully`)
     }
 
     const removeFromCart = (id) => {
@@ -87,7 +99,17 @@ function CartProvider({ children }) {
     }
   }, [items])
 
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>
+  return (
+    <CartContext.Provider value={value}>
+      {children}
+      {toast && (
+        <div className="lux-toast" role="status" aria-live="polite">
+          <span className="lux-toast-check">✓</span>
+          {toast.message}
+        </div>
+      )}
+    </CartContext.Provider>
+  )
 }
 
 export default CartProvider

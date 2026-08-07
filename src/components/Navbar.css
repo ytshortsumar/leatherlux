@@ -54,22 +54,37 @@
   color: #d4af74;
 }
 
+.lux-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .lux-cart-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  color: #d8cfc2;
+  transition: color 0.2s ease;
+}
+
+.lux-cart-link:hover {
+  color: #d4af74;
 }
 
 .lux-cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 1.25rem;
-  height: 1.25rem;
-  padding: 0 0.4rem;
+  min-width: 1.15rem;
+  height: 1.15rem;
+  padding: 0 0.35rem;
   background-color: #d4af74;
   color: #1c1410;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
   line-height: 1;
   border-radius: 999px;

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useCart } from '../hooks/useCart'
+import { formatPrice } from '../utils/formatPrice'
 import './Checkout.css'
 
 const initialDetails = {
@@ -46,7 +47,6 @@ function validateField(name, value) {
   }
 }
 
-// Fields that must pass validation (notes is optional and excluded).
 const requiredFields = ['fullName', 'email', 'phone', 'address', 'city', 'postalCode']
 
 function Checkout() {
@@ -58,7 +58,6 @@ function Checkout() {
   const handleChange = (event) => {
     const { name, value } = event.target
     setDetails((current) => ({ ...current, [name]: value }))
-    // Clear a field's error as soon as the user starts correcting it.
     setErrors((current) => {
       if (!current[name]) return current
       const next = { ...current }
@@ -82,7 +81,6 @@ function Checkout() {
     })
     setErrors(nextErrors)
     if (Object.keys(nextErrors).length > 0) {
-      // Move focus to the first field with an error for accessibility.
       const firstInvalid = requiredFields.find((field) => nextErrors[field])
       if (firstInvalid) {
         const el = document.getElementById(firstInvalid)
@@ -262,7 +260,7 @@ function Checkout() {
                         </span>
                       </span>
                       <span className="lux-checkout-item-price">
-                        ${item.price * item.quantity}
+                        {formatPrice(item.price * item.quantity)}
                       </span>
                     </div>
                   ))}
@@ -274,7 +272,7 @@ function Checkout() {
                 </div>
                 <div className="lux-checkout-summary-row">
                   <span>Subtotal</span>
-                  <span>${totalPrice}</span>
+                  <span>{formatPrice(totalPrice)}</span>
                 </div>
                 <div className="lux-checkout-summary-row">
                   <span>Shipping</span>
@@ -282,7 +280,7 @@ function Checkout() {
                 </div>
                 <div className="lux-checkout-summary-total">
                   <span>Total</span>
-                  <span>${totalPrice}</span>
+                  <span>{formatPrice(totalPrice)}</span>
                 </div>
 
                 <Link to="/cart" className="lux-checkout-back">

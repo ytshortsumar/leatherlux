@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { getProducts } from '../services/productService'
 import './Shop.css'
@@ -11,17 +12,36 @@ const categories = [
   { key: 'belts', label: 'Belts' },
 ]
 
-const DEFAULT_MIN = 0
-const DEFAULT_MAX = 1000
+const pricePresets = [500, 1000, 2000, 5000, 10000, 15000, 20000, 30000, 40000, 50000]
 
 function Shop() {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
-  const [activeCategory, setActiveCategory] = useState('all')
-  const [minPrice, setMinPrice] = useState(DEFAULT_MIN)
-  const [maxPrice, setMaxPrice] = useState(DEFAULT_MAX)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const categoryParam = searchParams.get('category')
+  const activeCategory = categories.some((c) => c.key === categoryParam)
+    ? categoryParam
+    : 'all'
+
+  const setActiveCategory = (key) => {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev)
+        if (key === 'all') {
+          next.delete('category')
+        } else {
+          next.set('category', key)
+        }
+        return next
+      },
+      { replace: true },
+    )
+  }
+
+  const [minPrice, setMinPrice] = useState(pricePresets[0])
+  const [maxPrice, setMaxPrice] = useState(pricePresets[pricePresets.length - 1])
 
   useEffect(() => {
     let active = true
@@ -29,11 +49,6 @@ function Shop() {
       .then((data) => {
         if (!active) return
         setProducts(data)
-        if (data.length > 0) {
-          const priceValues = data.map((product) => product.price)
-          setMinPrice(Math.min(...priceValues))
-          setMaxPrice(Math.max(...priceValues))
-        }
         setLoading(false)
       })
       .catch(() => {
@@ -45,14 +60,6 @@ function Shop() {
       active = false
     }
   }, [])
-
-  const { MIN_PRICE, MAX_PRICE } = useMemo(() => {
-    if (products.length === 0) {
-      return { MIN_PRICE: DEFAULT_MIN, MAX_PRICE: DEFAULT_MAX }
-    }
-    const priceValues = products.map((product) => product.price)
-    return { MIN_PRICE: Math.min(...priceValues), MAX_PRICE: Math.max(...priceValues) }
-  }, [products])
 
   const lowPrice = Math.min(minPrice, maxPrice)
   const highPrice = Math.max(minPrice, maxPrice)
@@ -67,19 +74,13 @@ function Shop() {
 
   const isFiltered =
     activeCategory !== 'all' ||
-    minPrice !== MIN_PRICE ||
-    maxPrice !== MAX_PRICE
+    minPrice !== pricePresets[0] ||
+    maxPrice !== pricePresets[pricePresets.length - 1]
 
   const resetFilters = () => {
     setActiveCategory('all')
-    setMinPrice(MIN_PRICE)
-    setMaxPrice(MAX_PRICE)
-  }
-
-  const clampPrice = (value, fallback) => {
-    const parsed = Number(value)
-    if (Number.isNaN(parsed)) return fallback
-    return Math.min(Math.max(parsed, MIN_PRICE), MAX_PRICE)
+    setMinPrice(pricePresets[0])
+    setMaxPrice(pricePresets[pricePresets.length - 1])
   }
 
   return (
@@ -127,26 +128,30 @@ function Shop() {
                 <div className="lux-shop-price-inputs">
                   <label className="lux-shop-price-field">
                     <span>Min</span>
-                    <span className="lux-shop-price-prefix">$</span>
-                    <input
-                      type="number"
-                      min={MIN_PRICE}
-                      max={MAX_PRICE}
+                    <select
                       value={minPrice}
-                      onChange={(e) => setMinPrice(clampPrice(e.target.value, MIN_PRICE))}
-                    />
+                      onChange={(e) => setMinPrice(Number(e.target.value))}
+                    >
+                      {pricePresets.map((preset) => (
+                        <option key={preset} value={preset}>
+                          {preset.toLocaleString('en-US')}
+                        </option>
+                      ))}
+                    </select>
                   </label>
                   <span className="lux-shop-price-dash">–</span>
                   <label className="lux-shop-price-field">
                     <span>Max</span>
-                    <span className="lux-shop-price-prefix">$</span>
-                    <input
-                      type="number"
-                      min={MIN_PRICE}
-                      max={MAX_PRICE}
+                    <select
                       value={maxPrice}
-                      onChange={(e) => setMaxPrice(clampPrice(e.target.value, MAX_PRICE))}
-                    />
+                      onChange={(e) => setMaxPrice(Number(e.target.value))}
+                    >
+                      {pricePresets.map((preset) => (
+                        <option key={preset} value={preset}>
+                          {preset.toLocaleString('en-US')}
+                        </option>
+                      ))}
+                    </select>
                   </label>
                 </div>
               </div>

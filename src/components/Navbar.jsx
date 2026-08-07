@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { ShoppingCart } from 'lucide-react'
 import { useCart } from '../hooks/useCart'
 import './Navbar.css'
 
@@ -13,19 +14,32 @@ function Navbar() {
           Leather<span className="lux-brand-accent">Lux</span>
         </Link>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navMenu"
-          aria-controls="navMenu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        <div className="lux-navbar-actions order-lg-2">
+          <Link
+            className="lux-cart-link"
+            to="/cart"
+            aria-label={`Cart with ${totalItems} items`}
+          >
+            <ShoppingCart size={22} strokeWidth={1.75} />
+            {totalItems > 0 && (
+              <span className="lux-cart-badge">{totalItems}</span>
+            )}
+          </Link>
 
-        <div className="collapse navbar-collapse" id="navMenu">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navMenu"
+            aria-controls="navMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div className="collapse navbar-collapse order-lg-1" id="navMenu">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-4 align-items-lg-center">
             <li className="nav-item">
               <Link className="nav-link lux-nav-link" to="/">Home</Link>
@@ -61,14 +75,6 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <Link className="nav-link lux-nav-link" to="/contact">Contact</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link lux-nav-link lux-cart-link" to="/cart">
-                Cart
-                {totalItems > 0 && (
-                  <span className="lux-cart-badge">{totalItems}</span>
-                )}
-              </Link>
             </li>
           </ul>
         </div>

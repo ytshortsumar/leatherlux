@@ -1,0 +1,50 @@
+.lux-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #1c1410;
+  color: #f8f4ee;
+  padding: 0.9rem 1.3rem;
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  z-index: 9999;
+  animation: lux-toast-enter 0.2s ease;
+}
+
+@keyframes lux-toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lux-toast-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  background-color: #d4af74;
+  color: #1c1410;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+@media (max-width: 560px) {
+  .lux-toast {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    font-size: 0.85rem;
+  }
+}

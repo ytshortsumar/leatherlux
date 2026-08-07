@@ -79,19 +79,13 @@
   letter-spacing: 0.04em;
 }
 
-.lux-shop-price-prefix {
-  color: #1c1410 !important;
-  font-size: 0.9rem !important;
-  text-transform: none !important;
-}
-
-.lux-shop-price-field input {
-  width: 68px;
+.lux-shop-price-field select {
   border: none;
   outline: none;
   font-size: 0.9rem;
   color: #1c1410;
   background: transparent;
+  cursor: pointer;
 }
 
 .lux-shop-price-dash {

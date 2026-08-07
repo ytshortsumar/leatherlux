@@ -119,12 +119,14 @@
 .lux-cart-qty {
   display: inline-flex;
   align-items: center;
+  width: fit-content;
   border: 1px solid #d8cebf;
   border-radius: 3px;
   overflow: hidden;
 }
 
 .lux-cart-qty-btn {
+  flex: 0 0 auto;
   width: 2rem;
   height: 2rem;
   background-color: #f3ede4;
@@ -274,12 +276,12 @@
 
 @media (max-width: 560px) {
   .lux-cart-row {
-    grid-template-columns: 70px 1fr;
+    grid-template-columns: auto 1fr;
     grid-template-areas:
       'thumb info'
       'qty total'
       'remove remove';
-    row-gap: 0.8rem;
+    row-gap: 0.9rem;
     column-gap: 1rem;
     align-items: center;
   }
@@ -296,6 +298,7 @@
 
   .lux-cart-qty {
     grid-area: qty;
+    justify-self: start;
   }
 
   .lux-cart-line-total {

@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import ImageGallery from '../components/ImageGallery'
 import { getProductById } from '../services/productService'
 import { useCart } from '../hooks/useCart'
+import { formatPrice } from '../utils/formatPrice'
 import './ProductDetail.css'
 
 function ProductDetail() {
@@ -30,8 +31,6 @@ function ProductDetail() {
   const loading = loaded.id !== id
   const product = loading ? null : loaded.product
 
-  // "Added" confirmation shows only while the added id matches this product,
-  // so navigating to a different product naturally resets it.
   const justAdded = addedId === id
 
   const handleAddToCart = () => {
@@ -84,7 +83,7 @@ function ProductDetail() {
             <div className="lux-detail-info">
               <span className="lux-detail-category">{product.category}</span>
               <h1 className="lux-detail-name">{product.name}</h1>
-              <p className="lux-detail-price">${product.price}</p>
+              <p className="lux-detail-price">{formatPrice(product.price)}</p>
               <p className="lux-detail-description">{product.description}</p>
 
               {product.details && product.details.length > 0 && (

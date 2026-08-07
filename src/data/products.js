@@ -1,12 +1,10 @@
-// Product seed data for LeatherLux.
-// The app now reads products from Firebase Firestore; this file is the source
-// used by scripts/seedFirestore.js to populate the Firestore "products" collection.
+// Seed data for the Firestore "products" collection (see scripts/seedFirestore.js).
 const products = [
   {
     id: 1,
     name: 'Classic Bifold Wallet',
     category: 'wallets',
-    price: 59,
+    price: 8500,
     image: '/products/bifold-wallet.png',
     featured: true,
     description:
@@ -23,7 +21,7 @@ const products = [
     id: 2,
     name: 'Slim Cardholder',
     category: 'wallets',
-    price: 39,
+    price: 5500,
     image: '/products/cardholder.png',
     featured: true,
     description:
@@ -40,7 +38,7 @@ const products = [
     id: 3,
     name: 'Heritage Leather Jacket',
     category: 'jackets',
-    price: 349,
+    price: 49000,
     image: '/products/leather-jacket.png',
     featured: true,
     description:
@@ -57,7 +55,7 @@ const products = [
     id: 4,
     name: 'Weekender Duffle Bag',
     category: 'bags',
-    price: 219,
+    price: 32000,
     image: '/products/duffle-bag.png',
     featured: true,
     description:
@@ -74,7 +72,7 @@ const products = [
     id: 5,
     name: 'Urban Messenger Bag',
     category: 'bags',
-    price: 179,
+    price: 26000,
     image: '/products/messenger-bag.png',
     featured: false,
     description:
@@ -91,7 +89,7 @@ const products = [
     id: 6,
     name: 'Full-Grain Leather Belt',
     category: 'belts',
-    price: 49,
+    price: 6500,
     image: '/products/leather-belt.png',
     featured: true,
     description:
