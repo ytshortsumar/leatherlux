@@ -1,0 +1,389 @@
+/* ===== Passcode gate ===== */
+.lux-admin-gate {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f6f2;
+  padding: 3rem 1.2rem;
+}
+
+.lux-admin-gate-card {
+  width: 100%;
+  max-width: 380px;
+  background-color: #ffffff;
+  border: 1px solid #e8e2d8;
+  border-radius: 4px;
+  padding: 2.4rem 2rem;
+  text-align: center;
+}
+
+.lux-admin-gate-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem;
+  color: #1c1410;
+  margin: 0 0 0.5rem;
+}
+
+.lux-admin-gate-text {
+  color: #7a6f62;
+  font-size: 0.92rem;
+  margin: 0 0 1.4rem;
+}
+
+.lux-admin-gate-input {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.95rem;
+  color: #1c1410;
+  background-color: #f8f6f2;
+  border: 1px solid #d8cebf;
+  border-radius: 3px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.lux-admin-gate-input:focus {
+  outline: none;
+  border-color: #d4af74;
+  background-color: #ffffff;
+}
+
+.lux-admin-gate-error {
+  display: block;
+  margin-top: 0.5rem;
+  color: #c0392b;
+  font-size: 0.82rem;
+}
+
+.lux-admin-gate-btn {
+  width: 100%;
+  margin-top: 1.2rem;
+  background-color: #1c1410;
+  color: #f8f4ee;
+  border: none;
+  padding: 0.85rem 2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lux-admin-gate-btn:hover {
+  background-color: #d4af74;
+  color: #1c1410;
+}
+
+.lux-admin-gate-back {
+  display: inline-block;
+  margin-top: 1.2rem;
+  color: #8a5a2b;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.lux-admin-gate-back:hover {
+  color: #1c1410;
+}
+
+/* ===== Admin section ===== */
+.lux-admin {
+  padding: 3rem 0 4rem;
+  background-color: #f8f6f2;
+  min-height: 50vh;
+}
+
+.lux-admin-status {
+  text-align: center;
+  padding: 3rem 0;
+  color: #7a6f62;
+  font-size: 1.05rem;
+}
+
+.lux-admin-notice {
+  background-color: #f3ede2;
+  border: 1px solid #e0d5c2;
+  color: #5a4a36;
+  padding: 0.8rem 1.1rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  margin-bottom: 1.4rem;
+}
+
+.lux-admin-bar {
+  margin-bottom: 1rem;
+}
+
+.lux-admin-count {
+  color: #7a6f62;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ===== Table ===== */
+.lux-admin-table-wrap {
+  background-color: #ffffff;
+  border: 1px solid #e8e2d8;
+  border-radius: 4px;
+  padding: 1.4rem 1.6rem;
+  overflow-x: auto;
+}
+
+.lux-admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.lux-admin-table th {
+  text-align: left;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #8a7a66;
+  font-weight: 600;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 2px solid #e8e2d8;
+}
+
+.lux-admin-table td {
+  padding: 0.8rem 0.8rem;
+  border-bottom: 1px solid #eee7db;
+  color: #4a3f36;
+  font-size: 0.92rem;
+  vertical-align: middle;
+}
+
+.lux-admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.lux-admin-col-img {
+  width: 64px;
+}
+
+.lux-admin-thumb {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 3px;
+  background-color: #f2ece1;
+  border: 1px solid #e8e2d8;
+}
+
+.lux-admin-name {
+  font-weight: 600;
+  color: #1c1410;
+}
+
+.lux-admin-cat {
+  text-transform: capitalize;
+  color: #7a6f62;
+}
+
+.lux-admin-col-price {
+  color: #6b4e2e;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.lux-admin-badge {
+  display: inline-block;
+  background-color: #f3e6cf;
+  color: #8a5a2b;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.55rem;
+  border-radius: 2px;
+}
+
+.lux-admin-dash {
+  color: #c4b8a6;
+}
+
+.lux-admin-col-actions {
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* ===== Buttons ===== */
+.lux-admin-btn {
+  border: 1px solid transparent;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.lux-admin-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.lux-admin-btn-edit {
+  background-color: #1c1410;
+  color: #f8f4ee;
+  margin-right: 0.4rem;
+}
+
+.lux-admin-btn-edit:hover {
+  background-color: #d4af74;
+  color: #1c1410;
+}
+
+.lux-admin-btn-delete {
+  background-color: #ffffff;
+  color: #c0392b;
+  border-color: #e3b7b1;
+}
+
+.lux-admin-btn-delete:hover:not(:disabled) {
+  background-color: #fdf3f2;
+  border-color: #c0392b;
+}
+
+/* ===== Edit modal ===== */
+.lux-admin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem 1.2rem;
+  overflow-y: auto;
+}
+
+.lux-admin-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(28, 20, 16, 0.55);
+}
+
+.lux-admin-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 2rem 2.2rem 2.2rem;
+  box-shadow: 0 24px 60px rgba(28, 20, 16, 0.28);
+}
+
+.lux-admin-modal-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  color: #1c1410;
+  margin: 0 0 1.5rem;
+}
+
+.lux-admin-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  margin-top: 1.4rem;
+}
+
+.lux-admin-btn-cancel {
+  background-color: #ffffff;
+  color: #4a3f36;
+  border-color: #d8cebf;
+  padding: 0.7rem 1.4rem;
+}
+
+.lux-admin-btn-cancel:hover:not(:disabled) {
+  background-color: #f3ede2;
+}
+
+.lux-admin-btn-save {
+  background-color: #1c1410;
+  color: #f8f4ee;
+  padding: 0.7rem 1.6rem;
+}
+
+.lux-admin-btn-save:hover:not(:disabled) {
+  background-color: #d4af74;
+  color: #1c1410;
+}
+
+/* ===== Form fields (scoped to the modal so it's self-contained) ===== */
+.lux-admin-modal-card .lux-field {
+  margin-bottom: 1.1rem;
+}
+
+.lux-admin-modal-card .lux-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+
+.lux-admin-modal-card .lux-field label {
+  display: block;
+  color: #4a3f36;
+  font-size: 0.86rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.lux-admin-modal-card .lux-field input[type='text'],
+.lux-admin-modal-card .lux-field input[type='number'],
+.lux-admin-modal-card .lux-field textarea,
+.lux-admin-modal-card .lux-field select {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.94rem;
+  color: #1c1410;
+  background-color: #f8f6f2;
+  border: 1px solid #d8cebf;
+  border-radius: 3px;
+  font-family: inherit;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.lux-admin-modal-card .lux-field input:focus,
+.lux-admin-modal-card .lux-field textarea:focus,
+.lux-admin-modal-card .lux-field select:focus {
+  outline: none;
+  border-color: #d4af74;
+  background-color: #ffffff;
+}
+
+.lux-admin-modal-card .lux-field textarea {
+  resize: vertical;
+}
+
+.lux-admin-check label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.lux-admin-check input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #6b4e2e;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 560px) {
+  .lux-admin-modal-card {
+    padding: 1.6rem 1.4rem 1.8rem;
+  }
+
+  .lux-admin-modal-card .lux-field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .lux-admin-modal-card .lux-field-row .lux-field {
+    margin-bottom: 1.1rem;
+  }
+}

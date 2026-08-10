@@ -1,4 +1,13 @@
-import { collection, doc, getDoc, getDocs, orderBy, query } from 'firebase/firestore'
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  getDocs,
+  orderBy,
+  query,
+  setDoc,
+} from 'firebase/firestore'
 import { db } from '../firebase'
 
 const productsRef = collection(db, 'products')
@@ -16,4 +25,13 @@ export async function getFeaturedProducts() {
 export async function getProductById(id) {
   const snapshot = await getDoc(doc(db, 'products', String(id)))
   return snapshot.exists() ? snapshot.data() : null
+}
+
+export async function updateProduct(product) {
+  await setDoc(doc(db, 'products', String(product.id)), product)
+  return product
+}
+
+export async function deleteProduct(id) {
+  await deleteDoc(doc(db, 'products', String(id)))
 }
