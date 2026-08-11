@@ -11,7 +11,7 @@ function ProductCard({ product }) {
   return (
     <div className="lux-card">
       <div className="lux-card-media">
-        {imgFailed ? (
+        {imgFailed || !product.image ? (
           <div className="lux-card-fallback">
             <span className="lux-card-fallback-text">{product.name}</span>
           </div>

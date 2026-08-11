@@ -114,6 +114,11 @@
 }
 
 .lux-admin-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
   margin-bottom: 1rem;
 }
 
@@ -174,6 +179,10 @@
   border: 1px solid #e8e2d8;
 }
 
+.lux-admin-thumb-empty {
+  display: inline-block;
+}
+
 .lux-admin-name {
   font-weight: 600;
   color: #1c1410;
@@ -230,6 +239,17 @@
   background-color: #1c1410;
   color: #f8f4ee;
   margin-right: 0.4rem;
+}
+
+.lux-admin-btn-add {
+  background-color: #6b4e2e;
+  color: #f8f4ee;
+  padding: 0.6rem 1.2rem;
+}
+
+.lux-admin-btn-add:hover {
+  background-color: #d4af74;
+  color: #1c1410;
 }
 
 .lux-admin-btn-edit:hover {

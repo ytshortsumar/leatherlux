@@ -27,6 +27,11 @@ export async function getProductById(id) {
   return snapshot.exists() ? snapshot.data() : null
 }
 
+export async function createProduct(product) {
+  await setDoc(doc(db, 'products', String(product.id)), product)
+  return product
+}
+
 export async function updateProduct(product) {
   await setDoc(doc(db, 'products', String(product.id)), product)
   return product

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { formatPrice } from '../utils/formatPrice'
 import {
+  createProduct,
   deleteProduct,
   getProducts,
   updateProduct,
@@ -43,6 +44,22 @@ function fromForm(form) {
       .split('\n')
       .map((line) => line.trim())
       .filter(Boolean),
+  }
+}
+
+// A blank form for adding a new product. The id is left null here and assigned
+// on save (next number after the current highest id) so it stays sequential and
+// matches the Firestore document-id scheme used everywhere else.
+function emptyForm() {
+  return {
+    id: null,
+    name: '',
+    category: 'wallets',
+    price: '',
+    image: '',
+    featured: false,
+    description: '',
+    details: '',
   }
 }
 
@@ -102,6 +119,7 @@ function Admin() {
   const [error, setError] = useState(false)
 
   const [editing, setEditing] = useState(null) // form object, or null
+  const [mode, setMode] = useState('edit') // 'add' | 'edit'
   const [saving, setSaving] = useState(false)
   const [deletingId, setDeletingId] = useState(null)
   const [notice, setNotice] = useState('')
@@ -130,8 +148,15 @@ function Admin() {
     [products],
   )
 
+  const startAdd = () => {
+    setNotice('')
+    setMode('add')
+    setEditing(emptyForm())
+  }
+
   const startEdit = (product) => {
     setNotice('')
+    setMode('edit')
     setEditing(toForm(product))
   }
 
@@ -147,17 +172,34 @@ function Admin() {
 
   const handleSave = async (event) => {
     event.preventDefault()
-    const updated = fromForm(editing)
     setSaving(true)
     try {
-      await updateProduct(updated)
-      setProducts((current) =>
-        current.map((item) => (item.id === updated.id ? updated : item)),
-      )
-      setEditing(null)
-      setNotice(`Saved "${updated.name}".`)
+      if (mode === 'add') {
+        const nextId =
+          products.reduce(
+            (max, item) => Math.max(max, Number(item.id) || 0),
+            0,
+          ) + 1
+        const created = { ...fromForm(editing), id: nextId }
+        await createProduct(created)
+        setProducts((current) => [...current, created])
+        setEditing(null)
+        setNotice(`Added "${created.name}".`)
+      } else {
+        const updated = fromForm(editing)
+        await updateProduct(updated)
+        setProducts((current) =>
+          current.map((item) => (item.id === updated.id ? updated : item)),
+        )
+        setEditing(null)
+        setNotice(`Saved "${updated.name}".`)
+      }
     } catch {
-      setNotice('Could not save the product. Please try again.')
+      setNotice(
+        mode === 'add'
+          ? 'Could not add the product. Please try again.'
+          : 'Could not save the product. Please try again.',
+      )
     } finally {
       setSaving(false)
     }
@@ -217,6 +259,13 @@ function Admin() {
                   {sortedProducts.length}{' '}
                   {sortedProducts.length === 1 ? 'product' : 'products'}
                 </p>
+                <button
+                  type="button"
+                  className="lux-admin-btn lux-admin-btn-add"
+                  onClick={startAdd}
+                >
+                  + Add New Product
+                </button>
               </div>
 
               <table className="lux-admin-table">
@@ -234,15 +283,19 @@ function Admin() {
                   {sortedProducts.map((product) => (
                     <tr key={product.id}>
                       <td className="lux-admin-col-img">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="lux-admin-thumb"
-                          loading="lazy"
-                          onError={(event) => {
-                            event.currentTarget.style.visibility = 'hidden'
-                          }}
-                        />
+                        {product.image ? (
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="lux-admin-thumb"
+                            loading="lazy"
+                            onError={(event) => {
+                              event.currentTarget.style.visibility = 'hidden'
+                            }}
+                          />
+                        ) : (
+                          <span className="lux-admin-thumb lux-admin-thumb-empty" />
+                        )}
                       </td>
                       <td className="lux-admin-name">{product.name}</td>
                       <td className="lux-admin-cat">{product.category}</td>
@@ -290,7 +343,9 @@ function Admin() {
             aria-hidden="true"
           />
           <form className="lux-admin-modal-card" onSubmit={handleSave}>
-            <h2 className="lux-admin-modal-title">Edit Product</h2>
+            <h2 className="lux-admin-modal-title">
+              {mode === 'add' ? 'Add New Product' : 'Edit Product'}
+            </h2>
 
             <div className="lux-field">
               <label htmlFor="admin-name">Name</label>
@@ -397,7 +452,13 @@ function Admin() {
                 className="lux-admin-btn lux-admin-btn-save"
                 disabled={saving}
               >
-                {saving ? 'Saving…' : 'Save Changes'}
+                {saving
+                  ? mode === 'add'
+                    ? 'Adding…'
+                    : 'Saving…'
+                  : mode === 'add'
+                    ? 'Add Product'
+                    : 'Save Changes'}
               </button>
             </div>
           </form>
