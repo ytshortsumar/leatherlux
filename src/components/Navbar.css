@@ -89,3 +89,47 @@
   line-height: 1;
   border-radius: 999px;
 }
+
+/* ===== Day 18 — UI polish (cosmetic only) ===== */
+
+/* Animated gold underline that grows from the left on hover. Excludes the
+   "Shop" dropdown toggle so Bootstrap's caret (its ::after) is untouched. */
+.lux-nav-link:not(.dropdown-toggle) {
+  position: relative;
+}
+
+.lux-nav-link:not(.dropdown-toggle)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0.1rem;
+  width: 100%;
+  height: 1px;
+  background-color: #d4af74;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.lux-nav-link:not(.dropdown-toggle):hover::after {
+  transform: scaleX(1);
+}
+
+/* Gentle scale on the cart icon so it feels responsive to hover. */
+.lux-cart-link svg {
+  transition: transform 0.2s ease;
+}
+
+.lux-cart-link:hover svg {
+  transform: scale(1.08);
+}
+
+/* Softer entrance for the dropdown menu. */
+.lux-dropdown-item {
+  transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+}
+
+.lux-dropdown-item:hover,
+.lux-dropdown-item:focus {
+  padding-left: 1.4rem;
+}

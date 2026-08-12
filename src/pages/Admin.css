@@ -407,3 +407,45 @@
     margin-bottom: 1.1rem;
   }
 }
+
+/* ===== Day 18 — UI polish (cosmetic only) ===== */
+
+/* Press feedback on all admin buttons. */
+.lux-admin-btn:active:not(:disabled),
+.lux-admin-gate-btn:active {
+  transform: translateY(1px);
+}
+
+/* Fade the backdrop in and rise the modal card so it doesn't pop abruptly. */
+.lux-admin-modal-backdrop {
+  animation: lux-admin-fade 0.2s ease both;
+}
+
+.lux-admin-modal-card {
+  animation: lux-admin-rise 0.25s ease both;
+}
+
+@keyframes lux-admin-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes lux-admin-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Lift table rows subtly on hover for easier scanning. */
+.lux-admin-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.lux-admin-table tbody tr:hover {
+  background-color: #faf7f1;
+}

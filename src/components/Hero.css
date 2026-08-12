@@ -155,3 +155,39 @@
     font-size: 0.85rem;
   }
 }
+
+/* ===== Day 18 — UI polish (cosmetic only) ===== */
+
+/* One-time fade-up of the hero copy on page load for a premium first impression. */
+.lux-hero-content {
+  animation: lux-hero-rise 0.8s ease both;
+}
+
+@keyframes lux-hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Nudge the arrow inside the hero button on hover (button already shifts). */
+.lux-hero-btn span {
+  transition: transform 0.2s ease;
+}
+
+.lux-hero-btn:hover span {
+  transform: translateX(3px);
+}
+
+/* Slightly enlarge the active slide dot so the current slide reads clearly. */
+.lux-hero-dot {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.lux-hero-dot.active {
+  transform: scale(1.25);
+}

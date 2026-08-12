@@ -19,3 +19,45 @@ h1, h2, h3 {
   font-family: Georgia, 'Times New Roman', serif;
   color: #1c1410;
 }
+
+/* ===== Day 18 — UI polish (global, cosmetic only) ===== */
+
+/* Smooth in-page scrolling and crisper font rendering. */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Consistent brand-gold keyboard focus ring for accessibility. Uses
+   :focus-visible so it only shows for keyboard users, not on mouse click. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #d4af74;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Respect users who prefer reduced motion: neutralise all animation and
+   smooth scrolling site-wide so the polish never causes discomfort. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

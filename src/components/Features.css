@@ -40,3 +40,22 @@
 @media (max-width: 500px) {
   .lux-features-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== Day 18 — UI polish (cosmetic only) ===== */
+
+/* Give the icon a subtle lift and the title a colour shift on item hover. */
+.lux-feature-icon {
+  transition: transform 0.25s ease;
+}
+
+.lux-feature-title {
+  transition: color 0.2s ease;
+}
+
+.lux-feature-item:hover .lux-feature-icon {
+  transform: translateY(-3px) scale(1.08);
+}
+
+.lux-feature-item:hover .lux-feature-title {
+  color: #6b4e2e;
+}

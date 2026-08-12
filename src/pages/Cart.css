@@ -314,3 +314,35 @@
     margin-top: 0;
   }
 }
+
+/* ===== Day 18 — UI polish (cosmetic only) ===== */
+
+/* Smooth the product-name link colour change (was an instant jump). */
+.lux-cart-name a {
+  transition: color 0.2s ease;
+}
+
+/* Smooth and nudge the "continue shopping" link on hover. */
+.lux-cart-continue {
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.lux-cart-continue:hover {
+  transform: translateX(-3px);
+}
+
+/* Press feedback on the primary cart buttons. */
+.lux-cart-checkout:active,
+.lux-cart-shop-link:active {
+  transform: translateY(1px);
+}
+
+/* Lift the whole item row very slightly on hover. */
+.lux-cart-row {
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.lux-cart-row:hover {
+  border-color: #e0d5c2;
+  box-shadow: 0 6px 18px rgba(28, 20, 16, 0.06);
+}

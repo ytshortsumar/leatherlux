@@ -94,3 +94,24 @@
   text-align: center;
   margin: 0;
 }
+
+/* ===== Day 18 — UI polish (cosmetic only) ===== */
+
+/* Lift the social icons on hover in addition to the existing colour change. */
+.lux-footer-social a {
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.lux-footer-social a:hover {
+  transform: translateY(-3px);
+}
+
+/* Slide footer links slightly on hover to echo the dropdown behaviour. */
+.lux-footer-links a {
+  display: inline-block;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.lux-footer-links a:hover {
+  transform: translateX(3px);
+}

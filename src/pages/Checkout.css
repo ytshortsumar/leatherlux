@@ -277,3 +277,39 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== Day 18 — UI polish (cosmetic only) ===== */
+
+/* Smooth and nudge the back link on hover. */
+.lux-checkout-back {
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.lux-checkout-back:hover {
+  transform: translateX(-3px);
+}
+
+/* Press feedback on the primary buttons. */
+.lux-checkout-place:active,
+.lux-checkout-shop-link:active {
+  transform: translateY(1px);
+}
+
+/* Gentle pop of the success icon when the order is placed. */
+.lux-checkout-success-icon {
+  animation: lux-success-pop 0.4s ease both;
+}
+
+@keyframes lux-success-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
