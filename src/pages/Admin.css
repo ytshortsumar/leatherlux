@@ -1,4 +1,3 @@
-/* ===== Passcode gate ===== */
 .lux-admin-gate {
   min-height: 70vh;
   display: flex;
@@ -89,7 +88,7 @@
   color: #1c1410;
 }
 
-/* ===== Admin section ===== */
+
 .lux-admin {
   padding: 3rem 0 4rem;
   background-color: #f8f6f2;
@@ -128,7 +127,7 @@
   margin: 0;
 }
 
-/* ===== Table ===== */
+
 .lux-admin-table-wrap {
   background-color: #ffffff;
   border: 1px solid #e8e2d8;
@@ -219,7 +218,7 @@
   text-align: right;
 }
 
-/* ===== Buttons ===== */
+
 .lux-admin-btn {
   border: 1px solid transparent;
   padding: 0.45rem 0.9rem;
@@ -268,7 +267,7 @@
   border-color: #c0392b;
 }
 
-/* ===== Edit modal ===== */
+
 .lux-admin-modal {
   position: fixed;
   inset: 0;
@@ -332,7 +331,7 @@
   color: #1c1410;
 }
 
-/* ===== Form fields (scoped to the modal so it's self-contained) ===== */
+
 .lux-admin-modal-card .lux-field {
   margin-bottom: 1.1rem;
 }
@@ -392,7 +391,7 @@
   accent-color: #6b4e2e;
 }
 
-/* ===== Responsive ===== */
+
 @media (max-width: 560px) {
   .lux-admin-modal-card {
     padding: 1.6rem 1.4rem 1.8rem;
@@ -408,15 +407,13 @@
   }
 }
 
-/* ===== Day 18 — UI polish (cosmetic only) ===== */
 
-/* Press feedback on all admin buttons. */
 .lux-admin-btn:active:not(:disabled),
 .lux-admin-gate-btn:active {
   transform: translateY(1px);
 }
 
-/* Fade the backdrop in and rise the modal card so it doesn't pop abruptly. */
+
 .lux-admin-modal-backdrop {
   animation: lux-admin-fade 0.2s ease both;
 }
@@ -441,7 +438,7 @@
   }
 }
 
-/* Lift table rows subtly on hover for easier scanning. */
+
 .lux-admin-table tbody tr {
   transition: background-color 0.15s ease;
 }

@@ -63,9 +63,7 @@
   border-color: #1c1410;
 }
 
-/* ===== Day 18 — UI polish (cosmetic only) ===== */
 
-/* Slow zoom of the main image on hover; the container clips the overflow. */
 .lux-gallery-img {
   transition: transform 0.5s ease;
 }
@@ -74,7 +72,7 @@
   transform: scale(1.04);
 }
 
-/* Lift the active thumbnail slightly so the selected view stands out. */
+
 .lux-gallery-thumb {
   transition: border-color 0.2s ease, transform 0.2s ease;
 }

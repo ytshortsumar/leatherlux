@@ -105,9 +105,7 @@
   .lux-page-heading { font-size: 2rem; }
 }
 
-/* ===== Day 18 — UI polish (cosmetic only) ===== */
 
-/* Lift the value cards on hover, matching the product-card motion. */
 .lux-about-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }

@@ -24,7 +24,7 @@ function CartProvider({ children }) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
     } catch {
-      // Storage write error (e.g. storage full)
+      void 0
     }
   }, [items])
 

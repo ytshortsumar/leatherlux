@@ -155,14 +155,12 @@
   .lux-shop-price { align-items: flex-start; }
 }
 
-/* ===== Day 18 — UI polish (cosmetic only) ===== */
 
-/* Press feedback on filter chips. */
 .lux-shop-filter:active {
   transform: translateY(1px);
 }
 
-/* Highlight the price field border when its select is focused within. */
+
 .lux-shop-price-field {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }

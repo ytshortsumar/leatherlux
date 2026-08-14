@@ -4,7 +4,7 @@
   min-height: 50vh;
 }
 
-/* ---- Empty state ---- */
+
 .lux-cart-empty {
   text-align: center;
   padding: 3rem 0;
@@ -36,7 +36,7 @@
   color: #1c1410;
 }
 
-/* ---- Layout ---- */
+
 .lux-cart-layout {
   display: grid;
   grid-template-columns: 1fr 340px;
@@ -44,7 +44,7 @@
   align-items: start;
 }
 
-/* ---- Item rows ---- */
+
 .lux-cart-row {
   display: grid;
   grid-template-columns: 90px 1fr auto auto auto;
@@ -115,7 +115,7 @@
   margin: 0;
 }
 
-/* ---- Quantity stepper ---- */
+
 .lux-cart-qty {
   display: inline-flex;
   align-items: center;
@@ -190,7 +190,7 @@
   color: #1c1410;
 }
 
-/* ---- Summary card ---- */
+
 .lux-cart-summary {
   background-color: #ffffff;
   border: 1px solid #e8e2d8;
@@ -248,7 +248,7 @@
   color: #1c1410;
 }
 
-/* ---- Responsive ---- */
+
 @media (max-width: 860px) {
   .lux-cart-layout {
     grid-template-columns: 1fr;
@@ -259,7 +259,7 @@
   }
 }
 
-/* Tablet: keep the row on one line but tighten columns and spacing. */
+
 @media (max-width: 720px) {
   .lux-cart-row {
     grid-template-columns: 80px 1fr auto auto;
@@ -315,14 +315,12 @@
   }
 }
 
-/* ===== Day 18 — UI polish (cosmetic only) ===== */
 
-/* Smooth the product-name link colour change (was an instant jump). */
 .lux-cart-name a {
   transition: color 0.2s ease;
 }
 
-/* Smooth and nudge the "continue shopping" link on hover. */
+
 .lux-cart-continue {
   transition: color 0.2s ease, transform 0.2s ease;
 }
@@ -331,13 +329,13 @@
   transform: translateX(-3px);
 }
 
-/* Press feedback on the primary cart buttons. */
+
 .lux-cart-checkout:active,
 .lux-cart-shop-link:active {
   transform: translateY(1px);
 }
 
-/* Lift the whole item row very slightly on hover. */
+
 .lux-cart-row {
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }

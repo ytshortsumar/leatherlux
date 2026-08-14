@@ -1,4 +1,3 @@
-// Seed data for the Firestore "products" collection (see scripts/seedFirestore.js).
 const products = [
   {
     id: 1,

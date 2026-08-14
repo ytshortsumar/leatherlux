@@ -9,10 +9,6 @@ import {
 } from '../services/productService'
 import './Admin.css'
 
-// Lightweight client-side gate for the admin route. This is NOT real security —
-// it only keeps the page out of casual reach. A production build would use
-// Firebase Authentication. The passcode comes from VITE_ADMIN_PASSCODE, with a
-// fallback so /admin still opens on the live site if the env var is unset.
 const ADMIN_PASSCODE = import.meta.env.VITE_ADMIN_PASSCODE || 'leatherlux'
 const AUTH_KEY = 'lux-admin-auth'
 
@@ -47,9 +43,6 @@ function fromForm(form) {
   }
 }
 
-// A blank form for adding a new product. The id is left null here and assigned
-// on save (next number after the current highest id) so it stays sequential and
-// matches the Firestore document-id scheme used everywhere else.
 function emptyForm() {
   return {
     id: null,
@@ -118,8 +111,8 @@ function Admin() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
-  const [editing, setEditing] = useState(null) // form object, or null
-  const [mode, setMode] = useState('edit') // 'add' | 'edit'
+  const [editing, setEditing] = useState(null)
+  const [mode, setMode] = useState('edit')
   const [saving, setSaving] = useState(false)
   const [deletingId, setDeletingId] = useState(null)
   const [notice, setNotice] = useState('')

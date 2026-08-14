@@ -128,9 +128,7 @@
   color: #f8f4ee;
 }
 
-/* ===== Day 18 — UI polish (cosmetic only) ===== */
 
-/* Press feedback on the card action buttons. */
 .lux-card-btn:active,
 .lux-card-add:active {
   transform: translateY(1px);

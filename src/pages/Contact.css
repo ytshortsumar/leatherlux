@@ -64,14 +64,12 @@
   .lux-contact-form { padding: 1.8rem; }
 }
 
-/* ===== Day 18 — UI polish (cosmetic only) ===== */
 
-/* Press feedback on the submit button. */
 .lux-form-btn:active {
   transform: translateY(1px);
 }
 
-/* Soften the input focus with a faint gold glow to match the brand ring. */
+
 .lux-form-group input:focus,
 .lux-form-group textarea:focus {
   box-shadow: 0 0 0 3px rgba(212, 175, 116, 0.18);
