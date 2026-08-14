@@ -84,7 +84,7 @@ Built with **React 19**, **Vite 8**, and **Firebase Firestore**. Deployed on **V
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/leatherlux.git
+git clone https://github.com/ytshortsumar/leatherlux.git
 cd leatherlux
 ```
 

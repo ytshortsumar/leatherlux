@@ -3,6 +3,7 @@ import './Contact.css'
 
 function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [submitted, setSubmitted] = useState(false)
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -10,7 +11,8 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Contact form submitted:', form)
+    setSubmitted(true)
+    setForm({ name: '', email: '', message: '' })
   }
 
   return (
@@ -27,6 +29,21 @@ function Contact() {
 
       <section className="lux-contact-section">
         <div className="container">
+          {submitted ? (
+            <div className="lux-contact-success" style={{ textAlign: 'center', padding: '3rem 1rem' }}>
+              <h2 style={{ color: '#6b5b3e', marginBottom: '1rem' }}>Thank You!</h2>
+              <p style={{ color: '#5a4d3a', fontSize: '1.1rem' }}>
+                Your message has been received. We&apos;ll get back to you shortly.
+              </p>
+              <button
+                className="lux-form-btn"
+                style={{ marginTop: '1.5rem' }}
+                onClick={() => setSubmitted(false)}
+              >
+                Send Another Message
+              </button>
+            </div>
+          ) : (
           <form className="lux-contact-form" onSubmit={handleSubmit}>
             <div className="lux-form-group">
               <label htmlFor="name">Name</label>
@@ -69,6 +86,7 @@ function Contact() {
 
             <button type="submit" className="lux-form-btn">Send Message</button>
           </form>
+          )}
         </div>
       </section>
     </div>
