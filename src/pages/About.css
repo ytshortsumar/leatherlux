@@ -1,117 +1,406 @@
-.lux-page-hero {
-  background-color: #1c1410;
-  padding: 4rem 0;
-  text-align: center;
-}
+/* ============================================================
+   About — editorial, craft-led layout
+   Palette: espresso #1c1410 · gold #d4af74 · cream #f8f6f2
+   Type: Georgia (display) + Helvetica Neue (body) — site system
+   ============================================================ */
 
-.lux-page-tag {
-  color: #d4af74;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
+.lux-about-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-}
-
-.lux-page-heading {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 2.6rem;
-  color: #f3ede4;
-  margin: 0.6rem 0;
-}
-
-.lux-page-subtext {
-  color: #c9beb0;
-  font-size: 1rem;
-  max-width: 480px;
-  margin: 0 auto;
-}
-
-.lux-about-section {
-  padding: 4rem 0;
-  background-color: #f8f6f2;
-}
-
-.lux-about-block {
-  max-width: 720px;
-  margin: 0 auto 3rem;
-}
-
-.lux-about-block h2 {
-  font-family: Georgia, 'Times New Roman', serif;
-  color: #1c1410;
-  font-size: 1.8rem;
+  color: #d4af74;
   margin-bottom: 1rem;
 }
 
-.lux-about-block p {
-  color: #4a3f36;
-  line-height: 1.75;
-  margin-bottom: 1rem;
+.lux-about-eyebrow-dark {
+  color: #986a2c;
 }
 
-.lux-about-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  max-width: 960px;
-  margin: 0 auto 3rem;
-}
-
-.lux-about-card {
-  background-color: #fff;
-  border: 1px solid #e8e2d8;
-  padding: 1.5rem;
-  border-radius: 4px;
-}
-
-.lux-about-card h3 {
-  font-size: 1rem;
+.lux-about-h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  line-height: 1.15;
   color: #1c1410;
-  margin-bottom: 0.5rem;
+  margin: 0 0 1.4rem;
 }
 
-.lux-about-card p {
-  font-size: 0.88rem;
-  color: #7a6f62;
-  line-height: 1.5;
+/* ---------- Hero ---------- */
+.lux-about-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 60vh;
+  overflow: hidden;
+  background-color: #14100c;
+}
+
+.lux-about-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.lux-about-hero-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 10, 7, 0.92) 0%,
+    rgba(15, 10, 7, 0.6) 52%,
+    rgba(15, 10, 7, 0.15) 100%
+  );
+}
+
+.lux-about-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  padding: 5rem 0 3.75rem;
+  animation: lux-fade-up 0.7s ease both;
+}
+
+.lux-about-hero-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.4rem, 6vw, 4.1rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  color: #f6f1e9;
+  margin: 0 0 1.25rem;
+}
+
+.lux-about-hero-lead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #d6cbbd;
+  max-width: 30rem;
   margin: 0;
 }
 
-.lux-about-visit {
-  max-width: 720px;
-  margin: 0 auto;
-  text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid #e8e2d8;
+/* ---------- Intro / thesis ---------- */
+.lux-about-intro {
+  padding: 5rem 0 4rem;
+  background-color: #f8f6f2;
 }
 
-.lux-about-visit h2 {
+.lux-about-intro-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 2rem;
+  align-items: start;
+  max-width: 940px;
+}
+
+.lux-about-intro-grid .lux-about-eyebrow {
+  margin-top: 0.7rem;
+  margin-bottom: 0;
+}
+
+.lux-about-statement {
   font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  line-height: 1.45;
+  color: #2b2320;
+  margin: 0;
+}
+
+.lux-about-accent {
+  font-style: italic;
+  color: #6b4e2e;
+}
+
+.lux-about-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2.25rem;
+  margin: 3rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e4dccf;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7a6f62;
+}
+
+.lux-about-meta span {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.lux-about-meta span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translateY(-50%) rotate(45deg);
+  background-color: #d4af74;
+}
+
+/* ---------- Process (the signature) ---------- */
+.lux-about-process {
+  padding: 5rem 0;
+  background-color: #fffdf9;
+  border-top: 1px solid #ece5da;
+  border-bottom: 1px solid #ece5da;
+}
+
+.lux-about-head {
+  margin-bottom: 3rem;
+}
+
+.lux-about-head .lux-about-h2 {
+  margin-bottom: 0;
+}
+
+.lux-about-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.25rem;
+}
+
+.lux-about-step {
+  padding-top: 1.25rem;
+  border-top: 2px solid #e6ddce;
+  transition: border-color 0.25s ease;
+}
+
+.lux-about-step:hover {
+  border-top-color: #d4af74;
+}
+
+.lux-about-step-num {
+  display: block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: #d4af74;
+  margin-bottom: 1rem;
+}
+
+.lux-about-step-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
   color: #1c1410;
-  font-size: 1.6rem;
-  margin-bottom: 0.6rem;
+  margin: 0 0 0.6rem;
 }
 
-.lux-about-visit p {
-  color: #4a3f36;
+.lux-about-step-text {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #6b6055;
+  margin: 0;
+}
+
+/* ---------- Material split ---------- */
+.lux-about-material {
+  padding: 5rem 0;
+  background-color: #f8f6f2;
+}
+
+.lux-about-material-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.lux-about-material-media {
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.lux-about-material-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 30rem;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.lux-about-material-media:hover img {
+  transform: scale(1.03);
+}
+
+.lux-about-material-text p {
   font-size: 1rem;
+  line-height: 1.75;
+  color: #4a3f36;
+  margin: 0 0 1rem;
 }
 
+.lux-about-material-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Mission pull-quote ---------- */
+.lux-about-quote {
+  padding: 5.5rem 0;
+  background-color: #1c1410;
+  text-align: center;
+}
+
+.lux-about-quote-text {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.6rem, 3.4vw, 2.5rem);
+  line-height: 1.35;
+  color: #f3ede4;
+}
+
+.lux-about-quote-text::before {
+  content: '“';
+  display: block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 4rem;
+  line-height: 0.5;
+  color: #d4af74;
+  margin-bottom: 1.5rem;
+}
+
+.lux-about-quote-by {
+  margin: 1.75rem auto 0;
+  font-size: 0.95rem;
+  color: #b7aa97;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Visit the workshop ---------- */
+.lux-about-visit {
+  padding: 5rem 0;
+  background-color: #f8f6f2;
+}
+
+.lux-about-visit-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 3rem;
+  background-color: #ffffff;
+  border: 1px solid #e8e2d8;
+  border-radius: 4px;
+}
+
+.lux-about-visit-info {
+  max-width: 30rem;
+}
+
+.lux-about-visit-info .lux-about-h2 {
+  margin-bottom: 1rem;
+}
+
+.lux-about-visit-addr {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #2b2320;
+  margin: 0 0 0.5rem;
+}
+
+.lux-about-visit-hours {
+  font-size: 0.9rem;
+  color: #7a6f62;
+  margin: 0;
+}
+
+.lux-about-visit-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.lux-about-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background-color: #1c1410;
+  color: #f6f1e9;
+  text-decoration: none;
+  padding: 0.9rem 1.9rem;
+  border-radius: 2px;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.lux-about-btn:hover {
+  background-color: #d4af74;
+  color: #1c1410;
+}
+
+.lux-about-btn:active {
+  transform: translateY(1px);
+}
+
+.lux-about-btn span {
+  transition: transform 0.2s ease;
+}
+
+.lux-about-btn:hover span {
+  transform: translateX(3px);
+}
+
+.lux-about-link {
+  font-size: 0.9rem;
+  color: #8a5a2b;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.lux-about-link:hover {
+  border-bottom-color: #8a5a2b;
+}
+
+/* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-  .lux-about-grid { grid-template-columns: repeat(2, 1fr); }
+  .lux-about-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .lux-about-material-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .lux-about-material-media {
+    order: -1;
+  }
 }
 
-@media (max-width: 500px) {
-  .lux-about-grid { grid-template-columns: 1fr; }
-  .lux-page-heading { font-size: 2rem; }
-}
+@media (max-width: 560px) {
+  .lux-about-hero {
+    min-height: 52vh;
+  }
 
+  .lux-about-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
 
-.lux-about-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
+  .lux-about-intro-grid .lux-about-eyebrow {
+    margin-top: 0;
+  }
 
-.lux-about-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(28, 20, 16, 0.1);
-  border-color: #e0d5c2;
+  .lux-about-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .lux-about-visit-card {
+    padding: 2rem 1.5rem;
+  }
 }

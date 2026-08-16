@@ -1,0 +1,173 @@
+/* ============================================================
+   Support — Customer Service article pages
+   (Shipping, Returns, FAQs, Privacy). Uses the shared
+   .lux-page-hero band from index.css for the header.
+   ============================================================ */
+
+.lux-support-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3.5rem 0 4.5rem;
+}
+
+/* ---------- Article sections ---------- */
+.lux-support-section {
+  margin-bottom: 2.5rem;
+}
+
+.lux-support-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.lux-support-h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.45rem;
+  color: #1c1410;
+  margin: 0 0 0.9rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid #d4af74;
+}
+
+.lux-support-p {
+  color: #4a3f36;
+  line-height: 1.8;
+  margin: 0 0 1rem;
+}
+
+.lux-support-p:last-child {
+  margin-bottom: 0;
+}
+
+.lux-support-list {
+  margin: 0 0 1rem;
+  padding-left: 1.3rem;
+  color: #4a3f36;
+  line-height: 1.8;
+}
+
+.lux-support-list li {
+  margin-bottom: 0.4rem;
+}
+
+.lux-support-list li::marker {
+  color: #d4af74;
+}
+
+/* ---------- FAQ accordion (native <details>) ---------- */
+.lux-support-faq {
+  border-top: 1px solid #e8e2d8;
+}
+
+.lux-faq-item {
+  border-bottom: 1px solid #e8e2d8;
+}
+
+.lux-faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.3rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.1rem;
+  color: #1c1410;
+  transition: color 0.2s ease;
+}
+
+.lux-faq-q::-webkit-details-marker {
+  display: none;
+}
+
+.lux-faq-q:hover {
+  color: #6b4e2e;
+}
+
+.lux-faq-q:focus-visible {
+  outline: 2px solid #d4af74;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.lux-faq-icon {
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #d4af74;
+  transition: transform 0.2s ease;
+}
+
+.lux-faq-item[open] .lux-faq-icon {
+  transform: rotate(45deg);
+}
+
+.lux-faq-a {
+  margin: 0 0 1.3rem;
+  padding-right: 2.5rem;
+  color: #4a3f36;
+  line-height: 1.8;
+}
+
+/* ---------- Meta + help footer ---------- */
+.lux-support-updated {
+  margin: 2.5rem 0 0;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: #9a8f80;
+}
+
+.lux-support-help {
+  margin-top: 3.25rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid #e8e2d8;
+  text-align: center;
+}
+
+.lux-support-help-text {
+  margin: 0 0 1rem;
+  color: #4a3f36;
+  font-size: 1.05rem;
+}
+
+.lux-support-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background-color: #1c1410;
+  color: #f6f1e9;
+  text-decoration: none;
+  padding: 0.85rem 1.8rem;
+  border-radius: 2px;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.lux-support-cta:hover {
+  background-color: #d4af74;
+  color: #1c1410;
+}
+
+.lux-support-cta:active {
+  transform: translateY(1px);
+}
+
+.lux-support-cta span {
+  transition: transform 0.2s ease;
+}
+
+.lux-support-cta:hover span {
+  transform: translateX(3px);
+}
+
+@media (max-width: 560px) {
+  .lux-support-body {
+    padding: 2.5rem 0 3.5rem;
+  }
+
+  .lux-faq-a {
+    padding-right: 0;
+  }
+}

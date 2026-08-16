@@ -57,3 +57,38 @@ textarea:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ===== Shared page hero (used by Contact, Checkout, Admin, and Support pages) ===== */
+.lux-page-hero {
+  background-color: #1c1410;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.lux-page-tag {
+  color: #d4af74;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lux-page-heading {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.6rem;
+  color: #f3ede4;
+  margin: 0.6rem 0;
+}
+
+.lux-page-subtext {
+  color: #c9beb0;
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+@media (max-width: 500px) {
+  .lux-page-heading {
+    font-size: 2rem;
+  }
+}

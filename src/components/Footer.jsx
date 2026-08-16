@@ -49,10 +49,10 @@ function Footer() {
           <div className="col-6 col-md-3">
             <h4 className="lux-footer-heading">Customer Service</h4>
             <ul className="lux-footer-links">
-              <li><a href="#">Shipping & Delivery</a></li>
-              <li><a href="#">Returns & Exchanges</a></li>
-              <li><a href="#">FAQs</a></li>
-              <li><a href="#">Privacy Policy</a></li>
+              <li><Link to="/shipping">Shipping & Delivery</Link></li>
+              <li><Link to="/returns">Returns & Exchanges</Link></li>
+              <li><Link to="/faq">FAQs</Link></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
             </ul>
           </div>
 
