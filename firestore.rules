@@ -1,0 +1,32 @@
+rules_version = '2';
+
+// LeatherLux Firestore security rules.
+//
+// These run on Google's servers and are the REAL lock on the database — they
+// apply no matter what code a visitor runs in their browser console. The
+// client-side login only controls what the app UI shows; these rules control
+// what the database actually allows.
+//
+// Deploy them from the Firebase Console (Firestore Database → Rules → paste →
+// Publish) or with the Firebase CLI: `firebase deploy --only firestore:rules`.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Products power the public store, so anyone may READ them.
+    // Only the signed-in admin (matched by UID) may create/update/delete.
+    // Replace the placeholder below with your admin account's UID
+    // (Firebase Console → Authentication → Users → copy the User UID).
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.auth.uid == 'PASTE_YOUR_ADMIN_UID_HERE';
+    }
+
+    // Deny everything else by default. Any collection not listed above is
+    // completely locked — no reads, no writes — until you add a rule for it.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

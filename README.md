@@ -40,9 +40,10 @@ Built with **React 19**, **Vite 8**, and **Firebase Firestore**. Deployed on **V
 
 | Area | What it does |
 |------|-------------|
-| **Passcode Gate** | Client-side passcode lock (env-configurable) to keep `/admin` out of casual reach |
+| **Firebase Auth Login** | `/admin` requires signing in with a Firebase Authentication (email/password) account — real server-verified login, not a client-side gate |
 | **Product Table** | Sortable list of all products with thumbnail, name, category, price, and featured badge |
 | **CRUD Operations** | Add, edit, and delete products directly in Firestore via a modal form; changes appear on the live store instantly |
+| **Server-Side Rules** | `firestore.rules` allows public reads but restricts all writes to the admin UID — enforced by Firestore, not the browser |
 
 ### UX & Accessibility
 
@@ -105,12 +106,12 @@ VITE_FIREBASE_PROJECT_ID=your-project-id
 VITE_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
 VITE_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
 VITE_FIREBASE_APP_ID=your-app-id
-
-# Passcode for the /admin product-management page (client-side gate only).
-VITE_ADMIN_PASSCODE=your-admin-passcode
 ```
 
 > The `.env` file is git-ignored so credentials stay out of the repository.
+> Admin login uses Firebase Authentication (create the user in the Firebase
+> Console) — there is no admin password in the code or env file. Product writes
+> are enforced server-side by [`firestore.rules`](./firestore.rules).
 
 ### 4. Seed Firestore with sample products
 

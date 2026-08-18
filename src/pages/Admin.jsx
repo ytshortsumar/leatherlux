@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth'
+import { auth } from '../firebase'
 import { formatPrice } from '../utils/formatPrice'
 import {
   createProduct,
@@ -8,9 +14,6 @@ import {
   updateProduct,
 } from '../services/productService'
 import './Admin.css'
-
-const ADMIN_PASSCODE = import.meta.env.VITE_ADMIN_PASSCODE || 'leatherlux'
-const AUTH_KEY = 'lux-admin-auth'
 
 const categories = ['wallets', 'jackets', 'bags', 'belts']
 
@@ -56,17 +59,23 @@ function emptyForm() {
   }
 }
 
-function AdminGate({ onUnlock }) {
-  const [value, setValue] = useState('')
-  const [error, setError] = useState(false)
+function AdminGate() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [submitting, setSubmitting] = useState(false)
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    if (value === ADMIN_PASSCODE) {
-      sessionStorage.setItem(AUTH_KEY, 'true')
-      onUnlock()
-    } else {
-      setError(true)
+    setError('')
+    setSubmitting(true)
+    try {
+      // Firebase verifies these credentials on Google's servers. The
+      // onAuthStateChanged listener in <Admin> switches the view on success.
+      await signInWithEmailAndPassword(auth, email.trim(), password)
+    } catch {
+      setError('Incorrect email or password.')
+      setSubmitting(false)
     }
   }
 
@@ -75,24 +84,42 @@ function AdminGate({ onUnlock }) {
       <form className="lux-admin-gate-card" onSubmit={handleSubmit}>
         <h1 className="lux-admin-gate-title">Admin Access</h1>
         <p className="lux-admin-gate-text">
-          Enter the admin passcode to manage products.
+          Sign in with your admin account to manage products.
         </p>
+        <input
+          type="email"
+          className="lux-admin-gate-input"
+          value={email}
+          onChange={(event) => {
+            setEmail(event.target.value)
+            setError('')
+          }}
+          placeholder="Email"
+          autoComplete="username"
+          autoFocus
+          required
+        />
         <input
           type="password"
           className="lux-admin-gate-input"
-          value={value}
+          value={password}
           onChange={(event) => {
-            setValue(event.target.value)
-            setError(false)
+            setPassword(event.target.value)
+            setError('')
           }}
-          placeholder="Passcode"
-          autoFocus
+          placeholder="Password"
+          autoComplete="current-password"
+          required
         />
         {error && (
-          <span className="lux-admin-gate-error">Incorrect passcode.</span>
+          <span className="lux-admin-gate-error">{error}</span>
         )}
-        <button type="submit" className="lux-admin-gate-btn">
-          Unlock
+        <button
+          type="submit"
+          className="lux-admin-gate-btn"
+          disabled={submitting}
+        >
+          {submitting ? 'Signing in…' : 'Sign In'}
         </button>
         <Link to="/" className="lux-admin-gate-back">
           ← Back to store
@@ -103,9 +130,8 @@ function AdminGate({ onUnlock }) {
 }
 
 function Admin() {
-  const [authed, setAuthed] = useState(
-    () => sessionStorage.getItem(AUTH_KEY) === 'true',
-  )
+  const [user, setUser] = useState(null)
+  const [authChecked, setAuthChecked] = useState(false)
 
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
@@ -118,7 +144,15 @@ function Admin() {
   const [notice, setNotice] = useState('')
 
   useEffect(() => {
-    if (!authed) return
+    // Keep in sync with Firebase Auth; persists across reloads automatically.
+    return onAuthStateChanged(auth, (nextUser) => {
+      setUser(nextUser)
+      setAuthChecked(true)
+    })
+  }, [])
+
+  useEffect(() => {
+    if (!user) return
     let active = true
     getProducts()
       .then((data) => {
@@ -134,7 +168,7 @@ function Admin() {
     return () => {
       active = false
     }
-  }, [authed])
+  }, [user])
 
   const sortedProducts = useMemo(
     () => [...products].sort((a, b) => a.id - b.id),
@@ -216,8 +250,18 @@ function Admin() {
     }
   }
 
-  if (!authed) {
-    return <AdminGate onUnlock={() => setAuthed(true)} />
+  if (!authChecked) {
+    return (
+      <div className="lux-admin-gate">
+        <div className="lux-admin-gate-card">
+          <p className="lux-admin-gate-text">Loading…</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!user) {
+    return <AdminGate />
   }
 
   return (
@@ -230,6 +274,13 @@ function Admin() {
             Edit product details or remove products. Changes are saved directly
             to Firestore and appear on the live store.
           </p>
+          <button
+            type="button"
+            className="lux-admin-btn lux-admin-signout"
+            onClick={() => signOut(auth)}
+          >
+            Sign out{user.email ? ` · ${user.email}` : ''}
+          </button>
         </div>
       </section>
 
